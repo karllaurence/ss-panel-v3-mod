@@ -25,7 +25,7 @@
 					<div class="card">
 						<div class="card-main">
 							<div class="card-inner">
-								<p>{$config["appName"]} 的邀请码，没了的话就烧纸吧。</p>
+								<p>{$config["appName"]} 暂时没有邀请码，请联系 233.network 的主人获取邀请码。</p>
 							</div>
 						</div>
 					</div>

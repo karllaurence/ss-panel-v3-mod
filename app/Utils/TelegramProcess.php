@@ -20,14 +20,14 @@ class TelegramProcess
                     break;
                 case 'checkin':
                     if (!$user->isAbleToCheckin()) {
-                        $bot->sendMessage($message->getChat()->getId(), "您今天续过了，别续了！再续，再续我就把你续给长者了！", $parseMode = null, $disablePreview = false, $replyToMessageId = $reply_to);
+                        $bot->sendMessage($message->getChat()->getId(), "您今天已经签到了，请明天再来吧～", $parseMode = null, $disablePreview = false, $replyToMessageId = $reply_to);
                         break;
                     }
                     $traffic = rand(Config::get('checkinMin'), Config::get('checkinMax'));
                     $user->transfer_enable = $user->transfer_enable + Tools::toMB($traffic);
                     $user->last_check_in_time = time();
                     $user->save();
-                    $bot->sendMessage($message->getChat()->getId(), "天若有情天亦老，我为长者续一秒！获得了 ".$traffic." MB 流量！", $parseMode = null, $disablePreview = false, $replyToMessageId = $reply_to);
+                    $bot->sendMessage($message->getChat()->getId(), "签到成功，获得了 ".$traffic." MB 流量！", $parseMode = null, $disablePreview = false, $replyToMessageId = $reply_to);
                     break;
                 default:
                     $bot->sendMessage($message->getChat()->getId(), "???", $parseMode = null, $disablePreview = false, $replyToMessageId = $reply_to);
@@ -64,7 +64,7 @@ class TelegramProcess
 						/ping  获取群组ID
 						/chat 唠嗑
 						/traffic 查询流量
-						/checkin 签到续命
+						/checkin 签到
 						/help 获取帮助信息
 
 						您可以在面板里点击 资料编辑 ，滑到页面最下方，就可以看到 Telegram 绑定指示了，绑定您的账号，更多精彩功能等着您去发掘。
@@ -191,7 +191,7 @@ class TelegramProcess
 						/ping  获取群组ID
 						/chat 唠嗑
 						/traffic 查询流量
-						/checkin 签到续命
+						/checkin 签到
 						/help 获取帮助信息
 
 						您可以在面板里点击 资料编辑 ，滑到页面最下方，就可以看到 Telegram 绑定指示了，绑定您的账号，更多精彩功能等着您去发掘。
