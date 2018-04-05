@@ -52,11 +52,11 @@ class DailyMail
         
         $sts = new Analytics();
         
-        Telegram::Send("233.network 的主人，系统今天的运行状况如下:".
+        Telegram::Send($config["appName"]." 的主人，系统今天的运行状况如下:".
         PHP_EOL.
         "今日签到人数:".$sts->getTodayCheckinUser().PHP_EOL.
         "今日使用总流量:".Tools::flowAutoShow($lastday_total).PHP_EOL.
-        "晚安~"
+        "Good night:)"
         );
     }
 

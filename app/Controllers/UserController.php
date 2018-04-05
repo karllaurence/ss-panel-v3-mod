@@ -1429,7 +1429,7 @@ class UserController extends BaseController
         }
 
         if (!$this->user->isAbleToCheckin()) {
-            $res['msg'] = "您似乎已经续命过了...";
+            $res['msg'] = "您似乎已经签到过了...";
             $res['ret'] = 1;
             return $response->getBody()->write(json_encode($res));
         }

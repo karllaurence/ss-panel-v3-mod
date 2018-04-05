@@ -37,11 +37,8 @@
 							<div class="card-main">
 								<div class="card-inner">
 									<div class="card-inner">
-										<p class="card-heading">注意！</p>
-
-										<p>邀请码请给认识的需要的人。</p>
-
-										<p>邀请有记录，若被邀请的人违反用户协议，您将会有连带责任。</p>
+										<p class="card-heading">注意：</p>
+										<p>请珍惜你手中的邀请码（如果有）。</p>
 									</div>
 									
 								</div>
@@ -55,11 +52,7 @@
 								<div class="card-inner">
 									<div class="card-inner">
 										<p class="card-heading">说明</p>
-
-										<p>邀请码暂时无法购买，请珍惜。</p>
-
-										<p>公共页面不定期发放邀请码，如果用完邀请码可以关注公共邀请。</p>
-										
+										<p>邀请码无法购买，请珍惜。</p>	
 										<p>您每拉一位用户注册，当 TA 充值时您就会获得 TA 充值金额的 <code>{$config["code_payback"]} %</code> 的提成。</p>
 									</div>
 									

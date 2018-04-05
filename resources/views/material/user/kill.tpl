@@ -27,7 +27,7 @@
 							<div class="card-main">
 								<div class="card-inner">
 									<div class="card-inner">
-										<h4>注意！</h4>
+										<h4>注意：</h4>
 
 										<p>帐号删除后，您的所有数据都会被<b>真实地</b>删除。</p>
 

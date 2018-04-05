@@ -85,7 +85,7 @@ class Job
         system("rm -rf /tmp/ssmodbackup", $ret);
         system("rm /tmp/ssmodbackup.zip", $ret);
 
-        Telegram::Send("备份完毕了喵~今天又是安全祥和的一天呢。");
+        Telegram::Send("数据库备份完毕，请在邮件中查看~");
     }
 
     public static function SyncDuoshuo()
@@ -142,7 +142,7 @@ class Job
         DetectLog::where("datetime", "<", time()-86400*3)->delete();
         Speedtest::where("datetime", "<", time()-86400*3)->delete();
         EmailVerify::where("expire_in", "<", time()-86400*3)->delete();
-        Telegram::Send("姐姐姐姐，数据库被清理了，感觉身体被掏空了呢~");
+        Telegram::Send("数据库正在被清理……数据库已经被清理好了~");
 
         //auto reset
         $boughts=Bought::all();

@@ -26,7 +26,7 @@
 							<div class="card">
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
-										<p class="card-heading">注意！</p>
+										<p class="card-heading">注意：</p>
 										<p>下面为您的 PAC 配置。</p>
 									</div>
 									

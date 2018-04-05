@@ -20,7 +20,7 @@ class TelegramProcess
                     break;
                 case 'checkin':
                     if (!$user->isAbleToCheckin()) {
-                        $bot->sendMessage($message->getChat()->getId(), "您今天已经签到了，请明天再来吧～", $parseMode = null, $disablePreview = false, $replyToMessageId = $reply_to);
+                        $bot->sendMessage($message->getChat()->getId(), "您今天已经签到了，请明天再来吧~", $parseMode = null, $disablePreview = false, $replyToMessageId = $reply_to);
                         break;
                     }
                     $traffic = rand(Config::get('checkinMin'), Config::get('checkinMax'));

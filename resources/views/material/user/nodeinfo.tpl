@@ -23,8 +23,8 @@
 							<div class="card">
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
-										<p class="card-heading">注意！</p>
-										<p>配置文件以及二维码请勿泄露！</p>
+										<p class="card-heading">注意：</p>
+										<p>配置文件以及二维码请勿泄露。</p>
 									</div>
 
 								</div>
