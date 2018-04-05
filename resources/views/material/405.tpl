@@ -23,7 +23,7 @@
 							<div class="card">
 								<div class="card-main">
 									<div class="card-inner">
-										<p>您的访问方式不正确。如果您认为这个错误不该发生，<a href="https://github.com/glzjin/ss-panel-v3-mod/issues">请到 Github 提交 issue</a>。</p>
+										<p>您的访问方式不正确。</p>
 									</div>
 									
 									<div class="card-action">
@@ -35,22 +35,6 @@
 								</div>
 							</div>
 
-								
-							<div class="card">
-								<div class="card-main">
-									<div class="card-inner">
-											<div class="card-img">
-												<img src="{$pic}" style="width: 100%;">
-											</div>
-									</div>
-									
-									
-								</div>
-							</div>
-							
-
-		
-							
 						</section>
 			
 			

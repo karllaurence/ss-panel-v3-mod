@@ -24,7 +24,7 @@
 								<div class="card">
 									<div class="card-main">
 										<div class="card-inner">
-											<p>欢迎来到 {$config["appName"]}，希望这里可以让你看到更大的世界:)</p>
+											<p>欢迎来到 {$config["appName"]} :)</p>
 										</div>
 									</div>
 								</div>
