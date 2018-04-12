@@ -1,24 +1,8 @@
-
-
-
-
-
-
-
-
-
 {include file='user/main.tpl'}
-
-
-
-
-
-
-
 	<main class="content">
 		<div class="content-header ui-content-header">
 			<div class="container">
-				<h1 class="content-heading">充值</h1>
+				<h1 class="content-heading">请选择一种方式进行充值</h1>
 			</div>
 		</div>
 		<div class="container">
@@ -29,7 +13,8 @@
 							<div class="card-main">
 								<div class="card-inner">
 									<div class="card-inner">
-										<p class="card-heading">充值码</p>
+										<p class="card-heading">使用充值码</p>
+										<p>（请联系管理员或发【工单】索要充值码，并注明所需金额）
 										<p>当前余额：{$user->money} 元</p>
 										<div class="form-group form-group-label">
 											<label class="floating-label" for="code">充值码</label>
@@ -45,6 +30,29 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-lg-12 col-md-12">
+						<div class="card margin-bottom-no">
+							<div class="card-main">
+								<div class="card-inner">
+									<form action="/user/code/yft" method="post" target="_blank">
+										<div class="card-inner">
+											<p class="card-heading">在线充值</p>
+											<p>当前余额：{$user->money} 元</p>
+											<div class="form-group form-group-label">
+												<label class="floating-label" for="price">充值金额</label>
+												<input class="form-control" id="price" name="price" type="text">
+											</div>
+										</div>
+										<div class="card-action">
+											<div class="card-action-btn pull-left">
+												<button type="submit" class="btn btn-flat waves-attach" id="yftCoin" ><span class="icon">check</span>&nbsp;充值</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
 					
 					{if $pmw!=''}
 					<div class="col-lg-12 col-md-12">
@@ -54,7 +62,6 @@
 									<div class="card-inner">
 										{$pmw}
 									</div>
-									
 								</div>
 							</div>
 						</div>
@@ -69,6 +76,7 @@
 										<div class="card-table">
 											<div class="table-responsive">
 												{$codes->render()}
+												<p class="card-heading">充值记录</p>
 												<table class="table table-hover">
 													<tr>
 														<th>ID</th>
@@ -122,21 +130,47 @@
 						</div>
 					</div>
 					
+					<div aria-hidden="true" class="modal modal-va-middle fade" id="readytopay" role="dialog" tabindex="-1">
+						<div class="modal-dialog modal-xs">
+							<div class="modal-content">
+								<div class="modal-heading">
+									<a class="modal-close" data-dismiss="modal">×</a>
+									<h2 class="modal-title">正在连接支付宝</h2>
+								</div>
+								<div class="modal-inner">
+									<p id="title">正在处理...</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div aria-hidden="true" class="modal modal-va-middle fade" id="alipay" role="dialog" tabindex="-1">
+						<div class="modal-dialog modal-xs">
+							<div class="modal-content">
+								<div class="modal-heading">
+									<a class="modal-close" data-dismiss="modal">×</a>
+									<h2 class="modal-title">请使用支付宝App扫码充值：</h2>
+								</div>
+								<div class="modal-inner">
+									<p id="title">订单二维码</p>
+									<p id="divide">-------------------------------------------------------------</p>
+									<p id="qrcode"></p>
+									<p id="info"></p>
+								</div>
+								
+								<div class="modal-footer">
+									<p class="text-right"><button class="btn btn-flat btn-brand waves-attach" data-dismiss="modal" id="alipay_cancel" type="button">取消</button></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 					{include file='dialog.tpl'}
 				</div>
 			</section>
 		</div>
 	</main>
-
-
-
-
-
-
-
 {include file='user/footer.tpl'}
-
-
 <script>
 	$(document).ready(function () {
 		$("#code-update").click(function () {
@@ -164,11 +198,77 @@
 				}
 			})
 		})
+
+        $("#yftCoin").click(function () {
+            var price = $("#price").val();
+            if (price == "" || price == null || price == 0){
+                $("#msg").html("金额不能为0或空！");
+                return false;
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "code/yft",
+                dataType: "json",
+                data: {
+                    price: price
+                },
+                success: function (data) {
+                    if (data.ret) {
+                        $("#readytopay").modal();
+                    }
+                }
+
+            })
+        });
 		
+		$("#urlChange").click(function () {
+			$.ajax({
+				type: "GET",
+				url: "code/f2fpay",
+				dataType: "json",
+				data: {
+					time: timestamp
+				},
+				success: function (data) {
+					if (data.ret) {
+						$("#readytopay").modal();
+					}
+				}
+				
+			})
+		});
 		
-	timestamp = {time()}; 
+		$("#readytopay").on('shown.bs.modal', function () {
+			$.ajax({
+				type: "POST",
+				url: "code/f2fpay",
+				dataType: "json",
+				data: {
+						amount: $("#type").find("option:selected").val()
+					},
+				success: function (data) {
+					$("#readytopay").modal('hide');
+					if (data.ret) {
+						$("#qrcode").html(data.qrcode);
+						$("#info").html("您的订单金额为："+data.amount+"元。");
+						$("#alipay").modal();
+					} else {
+						$("#result").modal();
+						$("#msg").html(data.msg);
+					}
+				},
+				error: function (jqXHR) {
+					$("#readytopay").modal('hide');
+					$("#result").modal();
+					$("#msg").html(data.msg+"  发生了错误。");
+				}
+			})
+		});
+
 		
-		
+	timestamp = {time()};
+
 	function f(){
 		$.ajax({
 			type: "GET",
@@ -180,6 +280,7 @@
 			success: function (data) {
 				if (data.ret) {
 					clearTimeout(tid);
+					$("#alipay").modal('hide');
 					$("#result").modal();
 					$("#msg").html("充值成功！");
 					window.setTimeout("location.href=window.location.href", {$config['jump_delay']});
@@ -189,6 +290,7 @@
 		tid = setTimeout(f, 1000); //循环调用触发setTimeout
 	}
 	setTimeout(f, 1000);
-})
+});
+
 </script>
 

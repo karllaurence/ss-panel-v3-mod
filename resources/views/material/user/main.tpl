@@ -346,8 +346,8 @@
 							</li>
 							
 							<li><a href="/user/bought"><i class="icon icon-lg">shopping_cart</i>&nbsp;购买记录</a></li>
-							
-							
+
+							<li><a href="/user/yftOrder"><i class="icon icon-lg">shopping_cart</i>&nbsp;充值记录</a></li>
 
 
 							<li>
