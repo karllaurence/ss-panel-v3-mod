@@ -14,7 +14,7 @@
 								<div class="card-inner">
 									<div class="card-inner">
 										<p class="card-heading">使用充值码</p>
-										<p>（请联系管理员或发【工单】索要充值码，并注明所需金额）
+										<p>如果你有充值码，请在这里充值
 										<p>当前余额：{$user->money} 元</p>
 										<div class="form-group form-group-label">
 											<label class="floating-label" for="code">充值码</label>
