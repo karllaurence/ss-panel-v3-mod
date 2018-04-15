@@ -23,7 +23,7 @@ class Shop extends Model
                     $content_text .= "为账号的有效期添加 ".$value." 天 ";
                     break;
                 case "class":
-                    $content_text .= "为账号升级为等级 ".$value." ,有效期 ".$content["class_expire"]." 天";
+                    $content_text .= "为账号升级为等级 ".$value." ，有效期 ".$content["class_expire"]." 天";
                     break;
                 case "reset":
                     $content_text .= " 在 ".$content["reset_exp"]." 天内，每 ".$value." 天重置流量为 ".$content["reset_value"]." G ";
@@ -31,14 +31,14 @@ class Shop extends Model
                 default:
             }
 
-            if ($i<count($content)&&$key!="reset_exp") {
-                $content_text .= ",";
+            if ($i<count($content)&&$key!="reset") {
+                $content_text .= "，";
             }
 
             $i++;
         }
 
-        if (substr($content_text, -1, 1)==",") {
+        if (substr($content_text, -1, 1)=="，") {
             $content_text=substr($content_text, 0, -1);
         }
 
