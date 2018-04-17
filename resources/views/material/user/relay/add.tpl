@@ -47,9 +47,9 @@
 										<label class="floating-label" for="port">端口</label>
 										<select id="port" class="form-control" name="port">
 											{foreach $ports as $port}
-												if ($port != "21001") {
+												{if $port neq 21001}
 													<option value="{$port}">{$port}</option>
-												}
+												{/if}
 											{/foreach}
 										</select>
 									</div>
