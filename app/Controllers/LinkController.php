@@ -366,7 +366,7 @@ class LinkController extends BaseController
 
         $items = URL::getAllItems($user, $is_mu, $is_ss);
         foreach($items as $item) {
-            $proxy_group .= $item['remark'].' = custom,'.$item['address'].','.$item['port'].','.$item['method'].','.$item['passwd'].','.Config::get('baseUrl').'/downloads/SSEncrypt.module'.URL::getSurgeObfs($item).',obfs-host=wns.windows.com,tfo=true'."\n";
+            $proxy_group .= $item['remark'].' = custom,'.$item['address'].','.$item['port'].','.$item['method'].','.$item['passwd'].','.Config::get('baseUrl').'/downloads/SSEncrypt.module'.URL::getSurgeObfs($item).',tfo=true'."\n";
             $proxy_name .= ",".$item['remark'];
         }
 
@@ -379,7 +379,7 @@ dns-server = system,1.2.4.8,80.80.80.80,80.80.81.81,1.1.1.1,1.0.0.1
 skip-proxy = 127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,100.64.0.0/10,17.0.0.0/8,localhost,*.local,*.crashlytics.com,::ffff:0.0.0.0/1,::ffff:128.0.0.0/1
 
 // iOS
-external-controller-access = lhie1@0.0.0.0:6170
+external-controller-access = user@0.0.0.0:6170
 
 allow-wifi-access = true
 
@@ -401,15 +401,13 @@ DIRECT = direct
 '.$proxy_group.'
 
 [Proxy Group]
-PROXY = select,AUTO'.$proxy_name.'
+PROXY = select'.$proxy_name.'
 Domestic = select,DIRECT,PROXY
 Others = select,PROXY,DIRECT
-Apple = select,DIRECT,AUTO'.$proxy_name.'
+Apple = select,DIRECT'.$proxy_name.'
 Netflix & TVB = select,PROXY'.$proxy_name.'
 Spotify = select,PROXY'.$proxy_name.'
 YouTube = select,PROXY'.$proxy_name.'
-AUTO = url-test'.$proxy_name.',url = http://www.gstatic.com/generate_204,interval = 1200
-
 
 [Rule]
 
