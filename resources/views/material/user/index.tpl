@@ -39,6 +39,8 @@
 									<div class="card-inner margin-bottom-no">
 										<p class="card-heading">连接信息 以及 All-in-One（快速配置指导）</p>
 										<p>您可以在这里查看您的连接信息。<br>同时，这里为您提供了自动化地配置文件生成，包含了所有 Shadowsocks 服务器的信息，方便您在诸多的服务器中快速添加，快速切换。</p>
+										<button class="btn btn-flat waves-attach" id="mode-ss" ><span class="icon">check</span>&nbsp;修改为 SS 模式</button>
+										<button class="btn btn-flat waves-attach" id="mode-ssr" ><span class="icon">check</span>&nbsp;修改为 SSR 模式</button>
 										<nav class="tab-nav margin-top-no">
 											<ul class="nav nav-list">
 												<li {if $ssr_prefer}class="active"{/if}>
@@ -92,16 +94,12 @@
 															普通端口地址：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=0</code><br>
 															单端口多用户端口地址：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code>
 															</p>
-
-															<button class="btn btn-flat waves-attach" id="mode-ss" ><span class="icon">check</span>&nbsp;修改为 SS 模式</button>
 														</dl>
 														{else}
 														<dl class="dl-horizontal">
 															<p>您好，您目前的 加密方式，混淆，或者协议设置在 ShadowsocksR 客户端下无法连接。请您选用 Shadowsocks 客户端来连接，或者到 资料编辑 页面修改后再来查看此处。</p>
 															<p>同时, ShadowsocksR 单端口多用户的连接不受您设置的影响,您可以在此使用相应的客户端进行连接~</p>
 															<p>请注意，在当前状态下您的 SSR 订阅链接已经失效，您无法通过此种方式导入节点。</p>
-
-															<button class="btn btn-flat waves-attach" id="mode-ssr" ><span class="icon">check</span>&nbsp;修改为 SSR 模式</button>
 														</dl>
 														{/if}
 													</div>
@@ -184,15 +182,11 @@
 															<p>密码：{$user->passwd}</p>
 															<p>自定义加密：{$user->method}</p>
 															<p>自定义混淆：{$user->obfs}</p>
-
-															<button class="btn btn-flat waves-attach" id="mode-ssr" ><span class="icon">check</span>&nbsp;修改为 SSR 模式</button>
 														</dl>
 														{else}
 														<dl class="dl-horizontal">
 															<p>您好，您目前的 加密方式，混淆，或者协议设置在 SS 客户端下无法连接。请您选用 SSR 客户端来连接，或者到 资料编辑 页面修改后再来查看此处。</p>
 															<p>同时, Shadowsocks 单端口多用户的连接不受您设置的影响,您可以在此使用相应的客户端进行连接~</p>
-
-															<button class="btn btn-flat waves-attach" id="mode-ss" ><span class="icon">check</span>&nbsp;修改为 SS 模式</button>
 														</dl>
 														{/if}
 													</div>
@@ -439,7 +433,7 @@
                 dataType: "json",
                 data: {
                     protocol: "auth_aes128_md5",
-                    obfs: "plain"
+                    obfs: "tls1.2_ticket_auth"
                 },
                 success: function (data) {
                     if (data.ret) {
