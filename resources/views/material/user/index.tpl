@@ -82,32 +82,25 @@
 														{$ssr_url_all_mu = URL::getAllUrl($pre_user, 1, 0)}
 														{if URL::SSRCanConnect($user)}
 														<dl class="dl-horizontal">
-															<p><dt>端口</dt>
-															<dd>{$user->port}</dd></p>
-
-															<p><dt>密码</dt>
-															<dd>{$user->passwd}</dd></p>
-
-															<p><dt>自定义加密</dt>
-															<dd>{$user->method}</dd></p>
-
-															<p><dt>自定义协议</dt>
-															<dd>{$user->protocol}</dd></p>
-
-															<p><dt>自定义混淆</dt>
-															<dd>{$user->obfs}</dd></p>
+															<p>端口：{$user->port}</p>
+															<p>密码：{$user->passwd}</p>
+															<p><自定义加密：{$user->method}</p>
+															<p>自定义协议：{$user->protocol}</p>
+															<p>自定义混淆：{$user->obfs}</p>
 
 															<p>SSR 订阅地址：<br>
 															普通端口地址：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=0</code><br>
 															单端口多用户端口地址：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code>
 															</p>
+
+															<button class="btn btn-flat waves-attach" id="mode-ss" ><span class="icon">check</span>&nbsp;修改为 SS 模式</button>
 														</dl>
 														{else}
 															<p>您好，您目前的 加密方式，混淆，或者协议设置在 ShadowsocksR 客户端下无法连接。请您选用 Shadowsocks 客户端来连接，或者到 资料编辑 页面修改后再来查看此处。</p>
-
 															<p>同时, ShadowsocksR 单端口多用户的连接不受您设置的影响,您可以在此使用相应的客户端进行连接~</p>
-
 															<p>请注意，在当前状态下您的 SSR 订阅链接已经失效，您无法通过此种方式导入节点。</p>
+
+															<button class="btn btn-flat waves-attach" id="mode-ssr" ><span class="icon">check</span>&nbsp;修改为 SSR 模式</button>
 														{/if}
 													</div>
 													<div class="tab-pane fade" id="all_ssr_windows">
@@ -185,23 +178,18 @@
 														{if URL::SSCanConnect($user)}
 														<dl class="dl-horizontal">
 															<p>各个节点的地址请到节点列表查看！</p>
+															<p>端口：{$user->port}</p>
+															<p>密码：{$user->passwd}</p>
+															<p>自定义加密：{$user->method}</p>
+															<p>自定义混淆<：{$user->obfs}</p>
 
-
-															<p><dt>端口</dt>
-															<dd>{$user->port}</dd></p>
-
-															<p><dt>密码</dt>
-															<dd>{$user->passwd}</dd></p>
-
-															<p><dt>自定义加密</dt>
-															<dd>{$user->method}</dd></p>
-
-															<p><dt>自定义混淆</dt>
-															<dd>{$user->obfs}</dd></p>
+															<button class="btn btn-flat waves-attach" id="mode-ssr" ><span class="icon">check</span>&nbsp;修改为 SSR 模式</button>
 														</dl>
 														{else}
 															<p>您好，您目前的 加密方式，混淆，或者协议设置在 SS 客户端下无法连接。请您选用 SSR 客户端来连接，或者到 资料编辑 页面修改后再来查看此处。</p>
 															<p>同时, Shadowsocks 单端口多用户的连接不受您设置的影响,您可以在此使用相应的客户端进行连接~</p>
+
+															<button class="btn btn-flat waves-attach" id="mode-ss" ><span class="icon">check</span>&nbsp;修改为 SS 模式</button>
 														{/if}
 													</div>
 													<div class="tab-pane fade" id="all_ss_windows">
@@ -211,10 +199,11 @@
 													</div>
 													<div class="tab-pane fade" id="all_ss_mac">
 														<p><a href="/downloads/SS-macOS.zip">下载</a>，安装，然后下载<a href="/user/getpcconf?is_mu=0&is_ss=1">这个（普通端口）</a>或者<a href="/user/getpcconf?is_mu=1&is_ss=1">这个（单端口多用户）</a>，运行程序，小飞机上右键 服务器列表 子菜单 的 “导入服务器配置文件...” 导入这个文件，然后选择一个合适的服务器，更新一下PAC，然后开启系统代理即可上网。</p>
+														<p>Surge 用户可以下载<a href="/link/{$ios_token}?is_ss=1">这个（普通端口）</a>或者<a href="/link/{$ios_token}?is_ss=1&is_mu=1">这个（单端口多用户）</a>，导入到 Surge 中，然后就可以随意切换服务器上网了。</p>
 													</div>
 													<div class="tab-pane fade" id="all_ss_ios">
 														<p>推荐下载<a href="https://itunes.apple.com/cn/app/shadowrocket/id932747118?mt=8">Shadowrocket</a>，然后在 Safari 中点击<a href="{$ss_url_all}">这个（普通端口）</a>或者<a href="{$ss_url_all_mu}">这个（单端口多用户）</a>，然后点击确定，就可以批量添加节点。</p>
-														<p>iOS 下载<a href="/link/{$ios_token}?is_ss=1">这个（普通端口）</a>或者<a href="/link/{$ios_token}?is_ss=1&is_mu=1">这个（单端口多用户）</a>，导入到 Surge 中，然后就可以随意切换服务器上网了。</p>
+														<p>Surge 用户可以下载<a href="/link/{$ios_token}?is_ss=1">这个（普通端口）</a>或者<a href="/link/{$ios_token}?is_ss=1&is_mu=1">这个（单端口多用户）</a>，导入到 Surge 中，然后就可以随意切换服务器上网了。</p>
 													</div>
 													<div class="tab-pane fade" id="all_ss_android">
 														<p><a href="/downloads/SS-Android.apk">下载</a>，再<a href="/downloads/SS-Android-Obfs.apk">下载</a>，然后安装，然后在手机上点击<a class="copy-text" data-clipboard-text="{$ss_url_all}">这个链接（普通端口）</a>或者<a class="copy-text" data-clipboard-text="{$ss_url_all_mu}">这个链接（单端口多用户端口）</a>复制到剪贴板，打开 Shadowsocks 客户端，选择从剪贴板导入，然后选择一个节点，设置一下路由为绕过大陆，点击飞机就可以上网了。</p>
@@ -413,6 +402,110 @@
 {include file='user/footer.tpl'}
 
 <script src="/theme/material/js/shake.js/shake.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#mode-ssr").click(function () {
+			
+            $.ajax({
+                type: "POST",
+                url: "/user/method",
+                dataType: "json",
+                data: {
+                    method: "aes-256-cfb"
+                },
+                success: function (data) {
+                    if (data.ret) {
+                        $("#result").modal();
+                        $("#msg").html("成功了");
+                    } else {
+                        $("#result").modal();
+                        $("#msg").html(data.msg);
+                    }
+                },
+                error: function (jqXHR) {
+                    $("#result").modal();
+                    $("#msg").html(data.msg+"     出现了一些错误。");
+                }
+            })
+			
+           $.ajax({
+                type: "POST",
+                url: "/user/ssr",
+                dataType: "json",
+                data: {
+                    protocol: "auth_aes128_md5",
+                    obfs: "tls1.2_ticket_auth"
+                },
+                success: function (data) {
+                    if (data.ret) {
+                        $("#result").modal();
+                        $("#msg").html(data.msg);
+                    } else {
+                        $("#result").modal();
+                        $("#msg").html(data.msg);
+                    }
+                },
+                error: function (jqXHR) {
+                    $("#result").modal();
+                    $("#msg").html(data.msg+"     出现了一些错误。");
+                }
+            })
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#mode-ss").click(function () {
+        	
+            $.ajax({
+                type: "POST",
+                url: "/user/method",
+                dataType: "json",
+                data: {
+                    method: "aes-256-cfb"
+                },
+                success: function (data) {
+                    if (data.ret) {
+                        $("#result").modal();
+                        $("#msg").html("成功了");
+                    } else {
+                        $("#result").modal();
+                        $("#msg").html(data.msg);
+                    }
+                },
+                error: function (jqXHR) {
+                    $("#result").modal();
+                    $("#msg").html(data.msg+"     出现了一些错误。");
+                }
+            })
+			
+           $.ajax({
+                type: "POST",
+                url: "/user/ssr",
+                dataType: "json",
+                data: {
+                    protocol: "origin",
+                    obfs: "simple_obfs_tls"
+                },
+                success: function (data) {
+                    if (data.ret) {
+                        $("#result").modal();
+                        $("#msg").html(data.msg);
+                    } else {
+                        $("#result").modal();
+                        $("#msg").html(data.msg);
+                    }
+                },
+                error: function (jqXHR) {
+                    $("#result").modal();
+                    $("#msg").html(data.msg+"     出现了一些错误。");
+                }
+            })
+        })
+    })
+</script>
 
 
 <script>
