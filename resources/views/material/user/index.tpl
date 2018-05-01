@@ -30,7 +30,16 @@
 										<p>{$ann->content}</p>
 										{/if}
 									</div>
+								</div>
+							</div>
 
+							<div class="card">
+								<div class="card-main">
+									<div class="card-inner margin-bottom-no">
+										<p class="card-heading">一键切换 SSR/SS 模式</p>
+										<button class="btn btn-flat waves-attach" id="mode-ssr" ><span class="icon">check</span>&nbsp;SSR 模式</button>
+										<button class="btn btn-flat waves-attach" id="mode-ss" ><span class="icon">check</span>&nbsp;SS 模式</button>
+									</div>
 								</div>
 							</div>
 
@@ -39,8 +48,6 @@
 									<div class="card-inner margin-bottom-no">
 										<p class="card-heading">连接信息 以及 All-in-One（快速配置指导）</p>
 										<p>您可以在这里查看您的连接信息。<br>同时，这里为您提供了自动化地配置文件生成，包含了所有 Shadowsocks 服务器的信息，方便您在诸多的服务器中快速添加，快速切换。</p>
-										<button class="btn btn-flat waves-attach" id="mode-ss" ><span class="icon">check</span>&nbsp;修改为 SS 模式</button>
-										<button class="btn btn-flat waves-attach" id="mode-ssr" ><span class="icon">check</span>&nbsp;修改为 SSR 模式</button>
 										<nav class="tab-nav margin-top-no">
 											<ul class="nav nav-list">
 												<li {if $ssr_prefer}class="active"{/if}>
