@@ -405,7 +405,7 @@
 
 <script>
     $(document).ready(function () {
-        $("mode-ssr").click(function () {
+        $("#mode-ssr").click(function () {
 			
             $.ajax({
                 type: "POST",
@@ -435,7 +435,7 @@
                 dataType: "json",
                 data: {
                     protocol: "auth_aes128_md5",
-                    obfs: "tls1.2_ticket_auth"
+                    obfs: "plain"
                 },
                 success: function (data) {
                     if (data.ret) {
