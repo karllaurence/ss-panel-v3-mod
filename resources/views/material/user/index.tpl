@@ -37,8 +37,14 @@
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
 										<p class="card-heading">一键切换 SSR/SS 模式</p>
-										<button class="btn btn-flat waves-attach" id="mode-ssr" ><span class="icon">check</span>&nbsp;SSR 模式</button>
-										<button class="btn btn-flat waves-attach" id="mode-ss" ><span class="icon">check</span>&nbsp;SS 模式</button>
+									</div>
+									<div class="card-action">
+										<div class="card-action-btn pull-left">
+											<p id="checkin-btn">
+												<button id="mode-ssr" class="btn btn-brand btn-flat waves-attach"><span class="icon">check</span>&nbsp;SSR 模式</button>
+												<button id="mode-ss" class="btn btn-brand btn-flat waves-attach"><span class="icon">check</span>&nbsp;SS 模式</button>
+											</p>
+										</div>
 									</div>
 								</div>
 							</div>
