@@ -84,7 +84,7 @@
 														<dl class="dl-horizontal">
 															<p>端口：{$user->port}</p>
 															<p>密码：{$user->passwd}</p>
-															<p><自定义加密：{$user->method}</p>
+															<p>自定义加密：{$user->method}</p>
 															<p>自定义协议：{$user->protocol}</p>
 															<p>自定义混淆：{$user->obfs}</p>
 
@@ -181,7 +181,7 @@
 															<p>端口：{$user->port}</p>
 															<p>密码：{$user->passwd}</p>
 															<p>自定义加密：{$user->method}</p>
-															<p>自定义混淆<：{$user->obfs}</p>
+															<p>自定义混淆：{$user->obfs}</p>
 
 															<button class="btn btn-flat waves-attach" id="mode-ssr" ><span class="icon">check</span>&nbsp;修改为 SSR 模式</button>
 														</dl>
