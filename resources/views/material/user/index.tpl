@@ -405,7 +405,7 @@
 
 <script>
     $(document).ready(function () {
-        $("#mode-ssr").click(function () {
+        $("mode-ssr").click(function () {
 			
             $.ajax({
                 type: "POST",
