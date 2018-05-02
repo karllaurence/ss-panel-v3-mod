@@ -2730,6 +2730,7 @@ html.no-touchevents .fbtn:hover > .fbtn-text {
   display: flex;
   margin-top: 24px;
   margin-bottom: 24px;
+  border-radius: 20px;
 }
 .card[href]:focus, .card[href]:hover {
   outline: 0;
