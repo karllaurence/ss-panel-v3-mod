@@ -89,17 +89,17 @@
 															自定义混淆：{$user->obfs}
 															</p>
 
-															<p>ShadowsocksR 订阅地址：<br>
-															单端口多用户端口地址（推荐使用）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
+															<p>ShadowsocksR 订阅地址：</p>
+															<p>单端口多用户地址（推荐）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
 															普通端口地址：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=0</code>
 															</p>
 														</dl>
 														{else}
 														<dl class="dl-horizontal">
-															<p>您好，您目前的加密方式、混淆或者协议设置不支持 ShadowsocksR 普通端口的连接，然而 ShadowsocksR 单端口多用户的连接不受您设置的影响，您可以在此使用相应的客户端进行连接~</p>
+															<p>您好，您目前的加密方式、混淆或者协议设置不支持 ShadowsocksR 普通端口的连接，然而 ShadowsocksR 单端口多用户的连接不受您设置的影响，您可以在此使用相应的客户端进行连接。</p>
 															
-															<p>ShadowsocksR 订阅地址：<br>
-															单端口多用户端口地址（推荐使用）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
+															<p>ShadowsocksR 订阅地址：</p>
+															<p>单端口多用户地址（推荐）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
 															</p>
 														</dl>
 														{/if}
@@ -111,32 +111,32 @@
 															(3)(推荐)右键小飞机--服务器--SSR服务器订阅设置，将订阅地址设置为下面的地址，其他参数留空，确定之后再更新 SSR 服务器订阅。<br>
 															然后选择一个合适的服务器，系统代理模式选”全局模式”，代理规则选“绕过局域网和大陆”，然后即可上网。</p>
 
-														<p>ShadowsocksR 订阅地址：<br>
-														单端口多用户端口地址（推荐使用）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
+														<p>ShadowsocksR 订阅地址：</p>
+														<p>单端口多用户地址（推荐）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
 														普通端口地址：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=0</code>
 														</p>
 													</div>
 													<div class="tab-pane fade" id="all_ssr_mac">
 														<p><a href="/downloads/SSR-macOS.dmg">下载</a>，安装，然后下载<a href="/user/getpcconf?is_mu=0&is_ss=0">这个(普通端口)</a>或者<a  href="/user/getpcconf?is_mu=1&is_ss=0">这个（单端口多用户）</a>，运行程序，小飞机上右键 服务器列表 子菜单 的 “导入服务器配置文件...” 导入这个文件，然后选择一个合适的服务器，更新一下PAC，然后开启系统代理即可上网。</p>
 
-														<p>ShadowsocksR 订阅地址：<br>
-														单端口多用户端口地址（推荐使用）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
+														<p>ShadowsocksR 订阅地址：</p>
+														<p>单端口多用户地址（推荐）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
 														普通端口地址：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=0</code>
 														</p>
 													</div>
 													<div class="tab-pane fade" id="all_ssr_ios">
 														<p>推荐下载<a href="https://itunes.apple.com/cn/app/shadowrocket/id932747118?mt=8">Shadowrocket</a>，然后在 Safari 中点击<a href="{$ssr_url_all}">这个（普通端口）</a>或者<a href="{$ssr_url_all_mu}">这个（单端口多用户）</a>，然后点击确定，就可以批量添加节点。</p>
 
-														<p>ShadowsocksR 订阅地址：<br>
-														单端口多用户端口地址（推荐使用）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
+														<p>ShadowsocksR 订阅地址：</p>
+														<p>单端口多用户地址（推荐）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
 														普通端口地址：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=0</code>
 														</p>
 													</div>
 													<div class="tab-pane fade" id="all_ssr_android">
 														<p><a href="/downloads/SSR-Android.apk">下载</a>，安装，然后在手机上默认浏览器中点击<a href="{$ssr_url_all}">这个链接（普通端口）</a>或者<a href="{$ssr_url_all_mu}">这个链接（单端口多用户）</a>，然后点击确定，批量添加完节点，然后路由选择绕过大陆，右上角开启就可以上网了。同时提供一个 ACL 地址，<a href="/link/{$acl_token}">长按复制地址</a>到客户端里应用即可。</p>
 
-														<p>ShadowsocksR 订阅地址：<br>
-														单端口多用户端口地址（推荐使用）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
+														<p>ShadowsocksR 订阅地址：</p>
+														<p>单端口多用户地址（推荐）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
 														普通端口地址：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=0</code>
 														</p>
 													</div>
@@ -188,9 +188,7 @@
 														</dl>
 														{else}
 														<dl class="dl-horizontal">
-															<p>您好，您目前的加密方式、混淆或者协议设置不支持 Shadowsocks 普通端口的连接，然而 Shadowsocks 单端口多用户的连接不受您设置的影响，您可以在此使用相应的客户端进行连接~</p>
-															
-															<p>同时, Shadowsocks 单端口多用户的连接不受您设置的影响,您可以在此使用相应的客户端进行连接~</p>
+															<p>您好，您目前的加密方式、混淆或者协议设置不支持 Shadowsocks 普通端口的连接，然而 Shadowsocks 单端口多用户的连接不受您设置的影响，您可以在此使用相应的客户端进行连接。</p>
 														</dl>
 														{/if}
 													</div>
@@ -201,11 +199,11 @@
 													</div>
 													<div class="tab-pane fade" id="all_ss_mac">
 														<p><a href="/downloads/SS-macOS.zip">下载</a>，安装，然后下载<a href="/user/getpcconf?is_mu=0&is_ss=1">这个（普通端口）</a>或者<a href="/user/getpcconf?is_mu=1&is_ss=1">这个（单端口多用户，推荐）</a>，运行程序，小飞机上右键 服务器列表 子菜单 的 “导入服务器配置文件...” 导入这个文件，然后选择一个合适的服务器，更新一下PAC，然后开启系统代理即可上网。</p>
-														<p>Surge 用户可以下载<a href="/link/{$ios_token}?is_ss=1">这个（普通端口）</a>或者<a href="/link/{$ios_token}?is_ss=1&is_mu=1">这个（单端口多用户，推荐）</a>，导入到 Surge 中，然后就可以随意切换服务器上网了。</p>
+														<p>或者可以下载 <a href="https://nssurge.com/mac/Surge-latest.zip">Surge for macOS</a> (需要有有效授权)，然后下载<a href="/link/{$ios_token}?is_ss=1">这个（普通端口）</a>或者<a href="/link/{$ios_token}?is_ss=1&is_mu=1">这个（单端口多用户，推荐）</a>，导入到 Surge for macOS 中，然后就可以随意切换服务器上网了。</p>
 													</div>
 													<div class="tab-pane fade" id="all_ss_ios">
-														<p>推荐下载<a href="https://itunes.apple.com/cn/app/shadowrocket/id932747118?mt=8">Shadowrocket</a>，然后在 Safari 中点击<a href="{$ss_url_all}">这个（普通端口）</a>或者<a href="{$ss_url_all_mu}">这个（单端口多用户，推荐）</a>，然后点击确定，就可以批量添加节点。</p>
-														<p>Surge 用户可以下载<a href="/link/{$ios_token}?is_ss=1">这个（普通端口）</a>或者<a href="/link/{$ios_token}?is_ss=1&is_mu=1">这个（单端口多用户，推荐）</a>，导入到 Surge 中，然后就可以随意切换服务器上网了。</p>
+														<p>推荐下载 <a href="https://itunes.apple.com/hk/app/shadowrocket/id932747118?mt=8">Shadowrocket</a>，然后在 Safari 中点击<a href="{$ss_url_all}">这个（普通端口）</a>或者<a href="{$ss_url_all_mu}">这个（单端口多用户，推荐）</a>，然后点击确定，就可以批量添加节点。</p>
+														<p>或者可以下载 <a href="https://itunes.apple.com/hk/app/surge-3-web-developer-tool/id1329879957?mt=8">Surge</a>，然后下载<a href="/link/{$ios_token}?is_ss=1">这个（普通端口）</a>或者<a href="/link/{$ios_token}?is_ss=1&is_mu=1">这个（单端口多用户，推荐）</a>，导入到 Surge 中，然后就可以随意切换服务器上网了。</p>
 													</div>
 													<div class="tab-pane fade" id="all_ss_android">
 														<p><a href="/downloads/SS-Android.apk">下载</a>，再<a href="/downloads/SS-Android-Obfs.apk">下载</a>，然后安装，然后在手机上点击<a class="copy-text" data-clipboard-text="{$ss_url_all}">这个链接（普通端口）</a>或者<a class="copy-text" data-clipboard-text="{$ss_url_all_mu}">这个链接（单端口多用户，推荐）</a>复制到剪贴板，打开 Shadowsocks 客户端，选择从剪贴板导入，然后选择一个节点，设置一下路由为绕过大陆，点击飞机就可以上网了。</p>
