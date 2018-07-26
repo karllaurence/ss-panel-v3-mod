@@ -461,8 +461,6 @@ Others = select,PROXY,DIRECT
 Apple = select,DIRECT'.$proxy_name.'
 Netflix & TVB & Spotify & YouTube = select,PROXY'.$proxy_name.'
 
-[Rule]
-
 '.$rules.'
 
 ';
