@@ -86,8 +86,8 @@
 															密码：{$user->passwd}<br>
 															自定义加密：{$user->method}<br>
 															自定义协议：{$user->protocol}<br>
-															自定义混淆：{$user->obfs}
-															</p>
+															自定义混淆：{$user->obfs}<br>
+															自定义混淆参数：{$user->obfs_param}</p>
 
 															<p>ShadowsocksR 订阅地址：</p>
 															<p>单端口多用户地址（推荐）：<code>{$baseUrl}/link/{$ssr_sub_token}?mu=1</code><br>
@@ -184,7 +184,8 @@
 															<p>端口：{$user->port}<br>
 															密码：{$user->passwd}<br>
 															自定义加密：{$user->method}<br>
-															自定义混淆：{$user->obfs}</p>
+															自定义混淆：{$user->obfs}<br>
+															自定义混淆参数：{$user->obfs_param}</p>
 														</dl>
 														{else}
 														<dl class="dl-horizontal">

@@ -370,7 +370,7 @@ class URL
 
             $user = $mu_user;
 
-            $node_name .= " - ".$mu_port." 端口单端口多用户";
+            $node_name .= " - ".$mu_port." 端口";
         }
 
         if($is_ss) {
