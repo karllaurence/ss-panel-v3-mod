@@ -162,7 +162,7 @@
         atLink               : true,           // for @link
         emailLink            : true,           // for email address auto link
         taskList             : false,          // Enable Github Flavored Markdown task lists
-        emoji                : true,          // :emoji: , Support Github emoji, Twitter Emoji (Twemoji);
+        emoji                : false,          // :emoji: , Support Github emoji, Twitter Emoji (Twemoji);
                                                // Support FontAwesome icon emoji :fa-xxx: > Using fontAwesome icon web fonts;
                                                // Support Editor.md logo icon emoji :editormd-logo: :editormd-logo-1x: > 1~8x;
         tex                  : false,          // TeX(LaTeX), based on KaTeX
@@ -3364,13 +3364,13 @@
 
     // Emoji graphics files url path
     editormd.emoji     = {
-        path  : "https://www.webpagefx.com/tools/emoji-cheat-sheet/graphics/emojis/",
+        path  : "http://www.emoji-cheat-sheet.com/graphics/emojis/",
         ext   : ".png"
     };
 
     // Twitter Emoji (Twemoji)  graphics files url path    
     editormd.twemoji = {
-        path : "https://twemoji.maxcdn.com/36x36/",
+        path : "http://twemoji.maxcdn.com/36x36/",
         ext  : ".png"
     };
 
@@ -3391,7 +3391,7 @@
             atLink               : true,           // for @link
             emailLink            : true,           // for mail address auto link
             taskList             : false,          // Enable Github Flavored Markdown task lists
-            emoji                : true,          // :emoji: , Support Twemoji, fontAwesome, Editor.md logo emojis.
+            emoji                : false,          // :emoji: , Support Twemoji, fontAwesome, Editor.md logo emojis.
             tex                  : false,          // TeX(LaTeX), based on KaTeX
             flowChart            : false,          // flowChart.js only support IE9+
             sequenceDiagram      : false,          // sequenceDiagram.js only support IE9+
@@ -3909,7 +3909,7 @@
             emailLink            : true,    // for mail address auto link
             tex                  : false,
             taskList             : false,   // Github Flavored Markdown task lists
-            emoji                : true,
+            emoji                : false,
             flowChart            : false,
             sequenceDiagram      : false,
             previewCodeHighlight : true
