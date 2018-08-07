@@ -1207,6 +1207,7 @@ class UserController extends BaseController
     {
         $protocol = $request->getParam('protocol');
         $obfs = $request->getParam('obfs');
+            $obfs_param = $request->getParam('obfs_param');
 
         $user = $this->user;
 
@@ -1232,6 +1233,7 @@ class UserController extends BaseController
 
         $user->protocol = $antiXss->xss_clean($protocol);
         $user->obfs = $antiXss->xss_clean($obfs);
+            $user->obfs_param = $antiXss->xss_clean($obfs_param);
 
 
         if (!Tools::checkNoneProtocol($user)) {

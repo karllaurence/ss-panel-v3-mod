@@ -86,7 +86,8 @@
 															密码：{$user->passwd}<br>
 															自定义加密：{$user->method}<br>
 															自定义协议：{$user->protocol}<br>
-															自定义混淆：{$user->obfs}
+															自定义混淆：{$user->obfs}<br>
+															自定义混淆参数：{$user->obfs_param}</p>
 															</p>
 
 															<p>ShadowsocksR 订阅地址：</p>
@@ -184,7 +185,8 @@
 															<p>端口：{$user->port}<br>
 															密码：{$user->passwd}<br>
 															自定义加密：{$user->method}<br>
-															自定义混淆：{$user->obfs}</p>
+															自定义混淆：{$user->obfs}<br>
+															自定义混淆参数：{$user->obfs_param}</p>
 														</dl>
 														{else}
 														<dl class="dl-horizontal">
