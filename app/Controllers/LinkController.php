@@ -455,7 +455,7 @@ DIRECT = direct
 '.$proxy_group.'
 
 [Proxy Group]
-PROXY = select'.$proxy_name.'
+PROXY = select,DIRECT'.$proxy_name.'
 Domestic = select,DIRECT,PROXY
 Others = select,PROXY,DIRECT
 Apple = select,DIRECT'.$proxy_name.'
