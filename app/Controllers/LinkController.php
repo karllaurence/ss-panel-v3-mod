@@ -424,7 +424,7 @@ class LinkController extends BaseController
             $proxy_group .= $item['remark'].' = custom,'.$item['address'].','.$item['port'].','.$item['method'].','.$item['passwd'].','.Config::get('baseUrl').'/downloads/SSEncrypt.module'.URL::getSurgeObfs($item).',tfo=true'."\n";
             $proxy_name .= ",".$item['remark'];
             $item_name = $item['remark'];
-            if($item_name[0,2] == "CN"){
+            if(substr($item_name,0,2) == "CN"){
                 $domestic_name .= ",".$item_name;
             }
         }
