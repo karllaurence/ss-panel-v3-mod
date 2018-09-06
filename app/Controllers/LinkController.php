@@ -415,6 +415,7 @@ class LinkController extends BaseController
     {
         $proxy_name="";
         $proxy_group="";
+        $domestic_name="";
 
         $rules = file_get_contents("https://raw.githubusercontent.com/lhie1/black-hole/master/Rule.conf");
 
@@ -422,6 +423,10 @@ class LinkController extends BaseController
         foreach($items as $item) {
             $proxy_group .= $item['remark'].' = custom,'.$item['address'].','.$item['port'].','.$item['method'].','.$item['passwd'].','.Config::get('baseUrl').'/downloads/SSEncrypt.module'.URL::getSurgeObfs($item).',tfo=true'."\n";
             $proxy_name .= ",".$item['remark'];
+            $item_name = $item['remark'];
+            if($item_name[0,2] == "CN"){
+                $domestic_name .= ",".$item_name;
+            }
         }
 
         return '#!MANAGED-CONFIG '.Config::get('baseUrl').''.$_SERVER['REQUEST_URI'].'
@@ -456,7 +461,7 @@ DIRECT = direct
 
 [Proxy Group]
 PROXY = select,DIRECT'.$proxy_name.'
-Domestic = select,DIRECT,CN01 Mobile,CN02 Telecom,CN03 Unicom
+Domestic = select,DIRECT'.$domestic_name.'
 Others = select,PROXY,DIRECT
 Apple = select,DIRECT'.$proxy_name.'
 Netflix & TVB & Spotify & YouTube = select,PROXY'.$proxy_name.'
