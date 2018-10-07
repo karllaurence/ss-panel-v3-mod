@@ -459,7 +459,7 @@ PROXY = select,DIRECT'.$proxy_name.'
 Domestic = select,DIRECT,PROXY
 Others = select,PROXY,DIRECT
 Apple = select,DIRECT'.$proxy_name.'
-Netflix & TVB & Spotify & YouTube = select,PROXY'.$proxy_name.'
+Media'.$proxy_name.'
 
 '.$rules.'
 
