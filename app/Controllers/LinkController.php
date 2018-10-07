@@ -464,7 +464,7 @@ PROXY = select,DIRECT'.$proxy_name.'
 Domestic = select,DIRECT'.$domestic_name.'
 Others = select,PROXY,DIRECT
 Apple = select,DIRECT'.$proxy_name.'
-Media'.$proxy_name.'
+Media = select'.$proxy_name.'
 
 '.$rules.'
 
