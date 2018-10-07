@@ -421,7 +421,11 @@ class LinkController extends BaseController
         $items = URL::getAllItems($user, $is_mu, $is_ss);
         foreach($items as $item) {
             $proxy_group .= $item['remark'].' = custom,'.$item['address'].','.$item['port'].','.$item['method'].','.$item['passwd'].','.Config::get('baseUrl').'/downloads/SSEncrypt.module'.URL::getSurgeObfs($item).',tfo=true'."\n";
-            $proxy_name .= ",".$item['remark'];
+            if (substr($item['remark'],0,2) == "CN") {
+                $domestic_name .= ",".$item['remark'];
+            } else {
+                $proxy_name .= ",".$item['remark'];
+            }
         }
 
         return '#!MANAGED-CONFIG '.Config::get('baseUrl').''.$_SERVER['REQUEST_URI'].'
@@ -456,10 +460,10 @@ DIRECT = direct
 
 [Proxy Group]
 PROXY = select,DIRECT'.$proxy_name.'
-Domestic = select,DIRECT,PROXY
+Domestic = select,DIRECT'.$domestic_name.'
 Others = select,PROXY,DIRECT
 Apple = select,DIRECT'.$proxy_name.'
-Media'.$proxy_name.'
+Media = select'.$proxy_name.'
 
 '.$rules.'
 
