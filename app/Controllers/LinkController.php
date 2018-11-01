@@ -470,6 +470,7 @@ AdBlock = select,Ad-GIF,Ad-Block,Ad-Pass
 Apple = select,DIRECT'.$proxy_name.'
 Media = select'.$proxy_name.'
 
+[Rule]
 '.$rules.'
 
 ';
