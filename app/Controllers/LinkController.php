@@ -457,12 +457,16 @@ replica = false
 
 [Proxy]
 DIRECT = direct
+Ad-GIF = reject-tinygif
+Ad-Block = reject
+Ad-Pass = direct
 '.$proxy_group.'
 
 [Proxy Group]
 PROXY = select,DIRECT'.$proxy_name.'
 Domestic = select,DIRECT'.$domestic_name.'
 Others = select,PROXY,DIRECT
+AdBlock = select,Ad-GIF,Ad-Block,Ad-Pass
 Apple = select,DIRECT'.$proxy_name.'
 Media = select'.$proxy_name.'
 
