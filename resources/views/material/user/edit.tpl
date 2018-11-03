@@ -553,7 +553,7 @@
                 data: {
                     protocol: $("#protocol").val(),
 					obfs: $("#obfs").val(),
-+					obfs_param: $("#obfs_param").val()
+					obfs_param: $("#obfs_param").val()
                 },
                 success: function (data) {
                     if (data.ret) {
