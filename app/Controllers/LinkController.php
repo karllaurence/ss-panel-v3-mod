@@ -416,7 +416,12 @@ class LinkController extends BaseController
         $proxy_name="";
         $proxy_group="";
 
-        $rules = file_get_contents("https://raw.githubusercontent.com/lhie1/black-hole/master/Rule.conf");
+        $general = file_get_contents("https://raw.githubusercontent.com/lhie1/black-hole/master/OldGeneral.conf");
+        $rule = file_get_contents("https://raw.githubusercontent.com/lhie1/black-hole/master/Rule.conf");
+        $url_rewrite = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Auto/URL%20Rewrite.conf");
+        $url_reject = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Auto/URL%20REJECT.conf");
+        $header = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Auto/Header%20Rewrite.conf");
+        $rules = $rule."\n\n".$url_rewrite."\n".$url_reject."\n\n".$header;
 
         $items = URL::getAllItems($user, $is_mu, $is_ss);
         foreach($items as $item) {
@@ -455,19 +460,19 @@ ipv6 = true
 replica = false
 
 [Proxy]
-DIRECT = direct
-Ad-GIF = reject-tinygif
+Direct = direct
 Ad-Block = reject
 Ad-Pass = direct
 '.$proxy_group.'
 
 [Proxy Group]
-PROXY = select,DIRECT'.$proxy_name.'
-Domestic = select,DIRECT'.$domestic_name.'
-Others = select,PROXY,DIRECT
-AdBlock = select,Ad-GIF,Ad-Block,Ad-Pass
-Apple = select,DIRECT'.$proxy_name.'
-Media = select'.$proxy_name.'
+Proxy = select,Direct'.$proxy_name.'
+Domestic = select,Direct'.$domestic_name.'
+Others = select,Proxy,Direct
+AdBlock = select,Ad-Block,Ad-Pass
+Apple = select,Direct'.$proxy_name.'
+China_media = select,Domestic,Proxy,Direct
+Global_media = select,Proxy,Direct
 
 [Rule]
 '.$rules.'
