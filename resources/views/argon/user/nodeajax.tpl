@@ -11,12 +11,13 @@
 		$().ready(function(){
 			chart{$id} = new CanvasJS.Chart("load{$id}_chart",
 			{
+              animationEnabled: true,
 				title:{
 					text: "节点负载情况 {$prefix}"
 				},
 				data: [
 				{
-					type: "line", 
+					type: "splineArea", 
 					dataPoints: [
 						{$i=0}
 						{foreach $load as $single_load}
@@ -60,7 +61,7 @@
 						indexLabelFontColor: "darkgrey",
 						indexLabelLineColor: "darkgrey",
 						indexLabelPlacement: "outside",
-						type: "doughnut",
+						type: "pie",
 						showInLegend: true,
 						dataPoints: [
 							{
@@ -82,7 +83,7 @@
 				},
 				data: [
 				{
-					type: "line", 
+					type: "splineArea", 
 					dataPoints: [
 						{$i=0}
 						{foreach $load as $single_load}

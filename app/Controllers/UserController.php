@@ -882,8 +882,6 @@ class UserController extends BaseController
         $coupon = $request->getParam('coupon');
         $code = $coupon;
         $shop = $request->getParam('shop');
-        // 关闭旧套餐自动续费
-        $disableothers=$request->getParam('disableothers');
 
         $autorenew = $request->getParam('autorenew');
 
@@ -934,15 +932,6 @@ class UserController extends BaseController
 
         $user->money=$user->money-$price;
         $user->save();
-
-        // 关闭旧套餐自动续费
-        if ($disableothers == 1) {
-            $boughts = Bought::where("userid", $user->id)->get();
-            foreach ($boughts as $disable_bought) {
-                $disable_bought->renew = 0;
-                $disable_bought->save();
-            }
-        }
 
         $bought=new Bought();
         $bought->userid=$user->id;

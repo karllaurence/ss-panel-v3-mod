@@ -24,7 +24,7 @@
 							<div class="card-inner">
 								<div class="form-group form-group-label">
 									<label class="floating-label" for="content">内容</label>
-									<link rel="stylesheet" href="/theme/material/editor/css/editormd.min.css" />
+									<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/editor.md@1.5.0/css/editormd.min.css" />
 									<div id="editormd">
 										<textarea style="display:none;" id="content"></textarea>
 									</div>
@@ -46,17 +46,16 @@
 								<div class="form-group">
 									<div class="row">
 										<div class="col-md-10 col-md-push-1">
-											<!-- changed -->
-											<div class="form-group form-group-label">
-                                          		<label class="floating-label" for="vip">VIP等级（发送给高于这个等级的用户 0为不分级）</label>
-												<input class="form-control" id="vip" type="text" name="vip">
-	                                           	<div class="checkbox switch">
-													<label for="issend">
-														<input class="access-hide" id="issend" type="checkbox" name="issend"><span class="switch-toggle"></span>是否发送邮件
-													</label>
-												</div>
+                                         <div class="form-group form-group-label">
+                                          	<label class="floating-label" for="vip">VIP等级（发送给高于这个等级的用户 0为不分级）</label>
+											<input class="form-control" id="vip" type="text" name="vip">
+                                           <div class="checkbox switch">
+											<label for="issend">
+												<input class="access-hide" id="issend" type="checkbox" name="issend"><span class="switch-toggle"></span>是否发送邮件
+											</label>
 											</div>
-											<!-- end -->
+										</div>
+                                         
 											<button id="submit" type="submit" class="btn btn-block btn-brand waves-attach waves-light">添加</button>
 										</div>
 									</div>
@@ -64,6 +63,7 @@
 							</div>
 						</div>
 					</div>
+                  
 					
 					{include file='dialog.tpl'}
 			</div>
@@ -85,11 +85,11 @@
 
 {include file='admin/footer.tpl'}
 
-<script src="/theme/material/editor/editormd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/editor.md@1.5.0/editormd.min.js"></script>
 <script>
     $(document).ready(function () {
         function submit() {
-        	// start
+          
           	if(document.getElementById('issend').checked)
 			{
 				var issend=1;
@@ -98,7 +98,7 @@
 			{
 				var issend=0;
 			}
-			// end
+          
             $.ajax({
                 type: "POST",
                 url: "/admin/announcement",
@@ -134,7 +134,7 @@
 	
     $(function() {
         editor = editormd("editormd", {
-            path : "/theme/material/editor/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
+             path : "https://cdn.jsdelivr.net/npm/editor.md@1.5.0/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
 			height: 720,
 			saveHTMLToTextarea : true
         });
