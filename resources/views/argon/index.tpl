@@ -40,7 +40,6 @@
 	<script src="js/modernizr-2.6.2.min.js"></script>  <!-- Modernizr /-->
 	<!-- mdui -->
 	<script src="https://cdn.jsdelivr.net/npm/mdui@0.4.1/dist/js/mdui.min.js"></script>
-
 	<style>
 		footer{
 			background-color: #ffffff;
@@ -69,7 +68,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#home"><!-- <img src="img/icon/cloud.png"> -->&nbsp{$config["appName"]}</a>
+				<a class="navbar-brand" href="#home"><img src="img/icon/cloud.png">&nbsp{$config["appName"]}</a>
 			</div>
 
 			<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
@@ -79,8 +78,7 @@
 					<li class="menuItem"><a href="#useit"><p style="font-family: 'Lato', sans-serif;">教程</p></a></li>
 					<li class="menuItem"><a href="#packages"><p style="font-family: 'Lato', sans-serif;">套餐</p></a></li>
 					<li class="menuItem"><a href="#contact"><p style="font-family: 'Lato', sans-serif;">联系</p></a></li>
-					<li class="menuItem"><a href="/tos.html"><p style="font-family: 'Lato', sans-serif;">服务条款</p></a></li>
-					<li class="menuItem"><a href="/auth/login"><p style="font-family: 'Lato', sans-serif;">用户中心</p></a></li>
+					<li class="menuItem"><a href="https://mimemi.org/auth/login"><p style="font-family: 'Lato', sans-serif;">用户中心</p></a></li>
 				</ul>
 			</div>
 		   
@@ -96,12 +94,12 @@
 			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">专业的云加速服务</h3>
 			<h3 class="h4_home wow fadeIn" data-wow-delay="0.8s">Professional Cloud Acceleration Service</h3>
 			<ul class="list-inline intro-social-buttons">
-				<li><a href="/auth/login" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s">
+				<li><a href="https://mimemi.org/auth/login" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s">
 					
 					
 					<span class="network-name">立即登录</span></a>
 				</li>
-				<li id="download" ><a href="/code" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s" target="_blank"><span class="network-name">获取邀请码注册</span></a>
+				<li id="download" ><a href="https://mimemi.org/code" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s" target="_blank"><span class="network-name">获取邀请码注册</span></a>
 				</li>
 			</ul>
 		</div>    
@@ -180,7 +178,7 @@
 						 	<p><span class="mdui-typo-headline mdui-text-color-indigo-900">CNY&nbsp;</span>
 						 		<span class="mdui-typo-display-2 mdui-text-color-grey-800">8</span>
 						 		<span class="mdui-p-r-4"></span></p>
-						 	<p class="mdui-card-primary-subtitle mdui-typo-subheading mdui-m-t-0">100 GiB/Month</p>
+						 	<p class="mdui-card-primary-subtitle mdui-typo-subheading mdui-m-t-0">60 GiB/Month</p>
 						 	<div class="mdui-divider"></div>
 						 	<p>
 								<span class="mdui-typo-headline mdui-text-color-indigo-900">CNY&nbsp;</span>
@@ -197,14 +195,14 @@
 							</p>
 						 </div>
 						 <div class="mdui-card-actions mdui-p-x-3">
-						 	<a href="/user/shop" target="_blank" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-700 mdui-btn-block">Order Now</a>
+						 	<a href="https://mimemi.org/user/shop" target="_blank" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-700 mdui-btn-block">Order Now</a>
 						 </div>
 						 <div class="mdui-card-content mdui-typo mdui-p-t-2 mdui-p-x-4">
 						 	<p class="mdui-typo-subheading mdui-m-t-0" style="font-size:110%">Lowend VIP2 包含:</p>
 						 	<ul class="mdui-p-l-0" style="list-style:none">
 						 		<li class="mdui-m-b-1"><span class="mdui-typo-subheading-opacity mdui-mb-4">7+ 基础节点</span></li>
 						 		<li class="mdui-m-b-1"><span class="mdui-typo-subheading-opacity mdui-m-b-4">720P~1080P 支持</span></li>
-						 		<li class="mdui-m-b-1"><span class="mdui-typo-subheading-opacity mdui-m-b-4">100GiB 流量/Month</span>
+						 		<li class="mdui-m-b-1"><span class="mdui-typo-subheading-opacity mdui-m-b-4">60GiB 流量/Month</span>
 						 		</li>
 						 		<li class="mdui-m-b-1"><span class="mdui-typo-subheading-opacity mdui-m-b-4">支持Netflix TVB BBC</span>
 						 		</li>
@@ -241,12 +239,12 @@
 							<p class="mdui-card-primary-subtitle mdui-typo-subheading mdui-m-y-0">2000 GiB/Year</p>
 						</div>
 						<div class="mdui-card-actions mdui-p-x-3">
-							<a href="/user/shop" target="_blank" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-700 mdui-btn-block">ORDER NOW</a>
+							<a href="https://mimemi.org/user/shop" target="_blank" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-700 mdui-btn-block">ORDER NOW</a>
 						</div>
 						<div class="mdui-card-content mdui-typo mdui-p-t-2 mdui-p-x-4">
 							<p class="mdui-typo-subheading mdui-m-t-0" style="font-size:110%">Mid-end VIP3 包含:</p>
 							<ul class="mdui-p-l-0" style="list-style:none">
-								<li class="mdui-m-b-1"><span class="mdui-typo-subheading-opacity mdui-mb-4">20+ 中級节点</span></li>
+								<li class="mdui-m-b-1"><span class="mdui-typo-subheading-opacity mdui-mb-4">20+ 节点</span></li>
 								<li class="mdui-m-b-1"><span class="mdui-typo-subheading-opacity mdui-m-b-4">1080P~4K 支持</span></li>
 								<li class="mdui-m-b-1">
 									<span class="mdui-typo-subheading-opacity mdui-m-b-4">150 GiB/Month</span>
@@ -289,13 +287,13 @@
 								<p class="mdui-card-primary-subtitle mdui-typo-subheading mdui-m-y-0">3000 GiB/Year</p>
 							</div>
 							<div class="mdui-card-actions mdui-p-x-3">
-								<a href="/user/shop" target="_blank" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-700 mdui-btn-block">ORDER NOW</a>
+								<a href="https://mimemi.org/user/shop" target="_blank" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-700 mdui-btn-block">ORDER NOW</a>
 							</div>
 							<div class="mdui-card-content mdui-typo mdui-p-t-2 mdui-p-x-4">
 								<p class="mdui-typo-subheading mdui-m-t-0" style="font-size:110%">High-end VIP4 包含:</p>
 								<ul class="mdui-p-l-0" style="list-style:none">
 									<li class="mdui-m-b-1">
-										<span class="mdui-typo-subheading-opacity mdui-mb-4">50+ 高級节点(包含回国节点)</span>
+										<span class="mdui-typo-subheading-opacity mdui-mb-4">37+ 节点(包含回国节点)</span>
 									</li>
 									<li class="mdui-m-b-1">
 										<span class="mdui-typo-subheading-opacity mdui-m-b-4">4K~8K 支持</span>
@@ -341,13 +339,13 @@
 								<p class="mdui-card-primary-subtitle mdui-typo-subheading mdui-m-y-0">Unmetered Data Transfer</p>
 							</div>
 							<div class="mdui-card-actions mdui-p-x-3">
-								<a href="/user/shop" target="_blank" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-700 mdui-btn-block">ORDER NOW</a>
+								<a href="https://mimemi.org/user/shop" target="_blank" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-700 mdui-btn-block">ORDER NOW</a>
 							</div>
 							<div class="mdui-card-content mdui-typo mdui-p-t-2 mdui-p-x-4">
 								<p class="mdui-typo-subheading mdui-m-t-0" style="font-size:110%">Profession VIP4 包含:</p>
 								<ul class="mdui-p-l-0" style="list-style:none">
 									<li class="mdui-m-b-1">
-										<span class="mdui-typo-subheading-opacity mdui-mb-4">50+ 高級节点(包含回国节点)</span>
+										<span class="mdui-typo-subheading-opacity mdui-mb-4">37+ 节点(包含回国节点)</span>
 									</li>
 									<li class="mdui-m-b-1">
 										<span class="mdui-typo-subheading-opacity mdui-m-b-4">4K~8K 支持</span>
@@ -396,7 +394,7 @@
 								<p class="mdui-card-primary-subtitle mdui-typo-subheading mdui-m-y-0">Unmetered Data Transfer</p>
 							</div>
 							<div class="mdui-card-actions mdui-p-x-3">
-								<a href="/user/shop" target="_blank" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-700 mdui-btn-block">ORDER NOW</a>
+								<a href="https://mimemi.org/user/shop" target="_blank" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-700 mdui-btn-block">ORDER NOW</a>
 							</div>
 							<div class="mdui-card-content mdui-typo mdui-p-t-2 mdui-p-x-4">
 								<p class="mdui-typo-subheading mdui-m-t-0" style="font-size:110%">Customized VIP 包含:</p>
@@ -450,7 +448,7 @@
 					</p>
 
 					 <p><a class="btn btn-embossed btn-primary" href="https://docs.mimemi.org" role="button" target="_blank">View Docs</a> 
-					 <a class="btn btn-embossed btn-info" href="/help/windows/" role="button" target="_blank">See Videos</a></p>
+					 <a class="btn btn-embossed btn-info" href="https://mimemi.org/help/windows/" role="button" target="_blank">See Videos</a></p>
 				</div>   
             </div>
         </div>
@@ -470,10 +468,10 @@
     			</div>
     			<div class="mdui-p-t-2 mdui-col-md-2 mdui-col-sm-3 mdui-col-xs-6">
     				<ul>
-						<li><a href="/user" class="mdui-text-color-theme-400" target="_blank">用户中心</a></li>
+						<li><a href="https://mimemi.org/user" class="mdui-text-color-theme-400" target="_blank">用户中心</a></li>
     					<li><a href="https://docs.mimemi.org/" target="_blank">文档中心</a></li>
-    					<li><a href="/help/windows" target="_blank">视频中心</a></li>
-    					<li><a href="/tos.html" target="_blank">服务条款</a></li>
+    					<li><a href="https://mimemi.org/help/windows" target="_blank">视频中心</a></li>
+    					<li><a href="https://mimemi.org/tos" target="_blank">服务条款</a></li>
     				</ul>
     			</div>
     			<div class="mdui-p-t-2 mdui-col-md-2 mdui-col-sm-3 mdui-col-xs-6">
@@ -489,7 +487,6 @@
     		<br>
     	</div>
     	</footer>
-    <!-- chat with me -->
 
     <!-- JavaScript -->
     <script src="js/jquery-1.10.2.js"></script>

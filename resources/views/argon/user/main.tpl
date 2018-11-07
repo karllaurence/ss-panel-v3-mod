@@ -10,11 +10,8 @@
 	
 	
 	<!-- css -->
-	<!-- <link href="/theme/material/css/base.min.css" rel="stylesheet"> -->
-	<!-- <link href="/theme/material/css/project.min.css" rel="stylesheet"> -->
-	<!-- cdn -->
-	<link href="https://cdn.jsdelivr.net/gh/sspuic/p@0x03/public/theme/material/css/base.min.css" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/gh/sspuic/p@0x03/public/theme/material/css/project.min.css" rel="stylesheet">
+	<link href="/theme/material/css/base.min.css" rel="stylesheet">
+	<link href="/theme/material/css/project.min.css" rel="stylesheet">
 	<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	
 

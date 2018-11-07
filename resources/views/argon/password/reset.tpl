@@ -1,53 +1,68 @@
-{include file='newui_header.tpl'}
+{include file='header.tpl'}
 
 
-  <main>
-    <section class="section section-shaped section-lg my-0">
-      <div class="shape shape-style-1 bg-gradient-default">
-      </div>
-      <div class="container pt-lg-md">
-        <div class="row justify-content-center">
-          <div class="col-lg-5">
-            <div class="card bg-secondary shadow border-0">
-              <div class="card-header bg-white pb-5">
-                <div class="text-muted text-center mb-3">
-                  <small>找回密码</small>
-                </div>
-              </div>
-              <div class="card-body px-lg-5 py-lg-5">
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                      </div>
-                      <input class="form-control" placeholder="邮箱" id="email" type="email">
-                    </div>
-                  </div>
-                  <div class="text-center">
-					    <button id="reset" type="submit" class="btn btn-primary my-4">发送邮件</button>
-                  </div>
-              </div>
-            </div>
-			
-            <div class="row mt-3">
-              <div class="col-6">
-                <a href="/auth/login" class="text-light">
-                  <small>登陆</small>
-                </a>
-              </div>
-              <div class="col-6 text-right">
-                <a href="/auth/register" class="text-light">
-                  <small>注册账号</small>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<main class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-lg-push-4 col-sm-6 col-sm-push-3">
+					<section class="content-inner">
+						<div class="card">
+							<div class="card-main">
+								<div class="card-header">
+									<div class="card-inner">
+										<h1 class="card-heading">重置密码</h1>
+									</div>
+								</div>
+								<div class="card-inner">
+									<p class="text-center">
+										<span class="avatar avatar-inline avatar-lg">
+											<img alt="Login" src="/theme/material/images/users/avatar-001.jpg">
+										</span>
+									</p>
+									
+										
+										
+										<div class="form-group form-group-label">
+											<div class="row">
+												<div class="col-md-10 col-md-push-1">
+													<label class="floating-label" for="email">邮箱</label>
+													<input class="form-control" id="email" type="text">
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<div class="row">
+												<div class="col-md-10 col-md-push-1">
+													<button id="reset" type="submit" class="btn btn-block btn-brand waves-attach waves-light">重置密码</button>
+												</div>
+											</div>
+										</div>
+										
+										
+									
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<p class="margin-no-top pull-left"><a class="btn btn-flat btn-brand waves-attach" href="/auth/login">登录</a></p>
+							<p class="margin-no-top pull-right"><a class="btn btn-flat btn-brand waves-attach" href="/auth/register">注册个帐号</a></p>
+						</div>
+						
+						
+						
+								
+						{include file='dialog.tpl'}
+						
+						
+						
+					</section>
+				</div>
+			</div>
+		</div>
+	</main>
 	
-{include file='newui_dialog.tpl'}
-{include file='auth/auth_footer.tpl'}
+{include file='footer.tpl'}
 
 
 <script>
@@ -80,7 +95,7 @@
         }
         $("html").keydown(function(event){
             if(event.keyCode==13){
-                reset();
+                login();
             }
         });
         $("#reset").click(function(){
