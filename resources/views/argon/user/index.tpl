@@ -128,7 +128,8 @@
 						<div class="row justify-content-center">
 							<div class="col-lg-9">
 						<div class="mb-3">
-							<small class="text-uppercase font-weight-bold" style="color: black !important;">All-in-One</small>
+							<small class="text-uppercase font-weight-bold" style="color: black !important;">连接信息 以及 All-in-One（快速配置指导）</small>
+							<p>您可以在这里查看您的连接信息。<br>同时，这里为您提供了自动化地配置文件生成，包含了所有服务器的信息，方便您在诸多的服务器中快速添加，快速切换。</p>
 						</div>
 							<div class="nav-wrapper">
 								<ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-text" role="tablist">
@@ -136,24 +137,11 @@
 										<a class="nav-link mb-sm-3 mb-md-0 active" id="all_info-tab" data-toggle="tab" href="#all_info" role="tab" aria-controls="all_info" aria-selected="true">连接信息</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link mb-sm-3 mb-md-0" id="all_ssr-tab" data-toggle="tab" href="#all_ssr" role="tab" aria-controls="all_ssr" aria-selected="false">SSR 一键导入</a>
+										<a class="nav-link mb-sm-3 mb-md-0" id="all_ssr-tab" data-toggle="tab" href="#all_ssr" role="tab" aria-controls="all_ss" aria-selected="false">SS</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link mb-sm-3 mb-md-0" id="all_ss-tab" data-toggle="tab" href="#all_ss" role="tab" aria-controls="all_ss" aria-selected="false">SS 一键导入</a>
+										<a class="nav-link mb-sm-3 mb-md-0" id="all_ss-tab" data-toggle="tab" href="#all_ss" role="tab" aria-controls="all_ssr" aria-selected="false">SSR</a>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link mb-sm-3 mb-md-0" id="all_v2-tab" data-toggle="tab" href="#all_v2" role="tab" aria-controls="all_v2" aria-selected="false">V4 宅男养成计划(Netflix账号)</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link mb-sm-3 mb-md-0" id="all_other-tab" data-toggle="tab" href="#all_other" role="tab" aria-controls="all_other" aria-selected="false">如果您无法更新订阅请看这里</a>
-									</li>
-									{if $user->class>=2}
-									<li class="nav-item">
-										<a class="nav-link mb-sm-3 mb-md-0" id="all_vip-tab" data-toggle="tab" href="#all_vip" role="tab" aria-controls="all_other" aria-selected="false">VIP用户群</a>
-									</li>
-									{/if}
-
 								</ul>
 							</div>
 
@@ -181,45 +169,16 @@
 
 												<p><dt>混淆</dt>
 												<dd><code style="color: purple !important">{$user->obfs}</code></dd></p>
+
 												<p><dt>自定义混淆参数</dt>
 													<dd><code style="color: purple !important">{$user->obfs_param}</code></dd>
 													
 												</p>
 											</dl>
-											{if URL::SSRCanConnect($user)}
-												<button id="mode-ss" class="btn btn-primary mt-4 switch-ss">切换为 SS 模式</button>
-												{/if}
-												{if URL::SSCanConnect($user)}
-												<button id="mode-ssr" class="btn btn-primary mt-4 switch-ssr">切换为 SSR 模式</button>
-												{/if}
+											
 											<button id="reset-link" class="btn btn-primary mt-4 reset-link">重置订阅/托管地址</button>
 										</div>
-										<div class="tab-pane fade" id="all_ssr" role="tabpanel" aria-labelledby="all_ssr-tab">
-											<div style="padding:18px">
-												{if URL::SSRCanConnect($user)}
-													<p>SSR 普通端口订阅地址</p>
-													<p>
-													<code style="color: purple !important"><a class="copy-text" data-clipboard-text="{$baseUrl}/link/{$ssr_sub_token}?mu=0">{$baseUrl}/link/{$ssr_sub_token}?mu=0</a></code>
-													</p>
-													<p>SSR 995端口订阅地址</p>
-													<p>
-													<code style="color: purple !important"><a class="copy-text" data-clipboard-text="{$baseUrl}/link/{$ssr_sub_token}?mu=1">{$baseUrl}/link/{$ssr_sub_token}?mu=1</a></code>
-													</p>
-													 <p><a href="Shadowrocket://add/sub://{$ssr_url_0}?remarks=MIMEMI%20Cloud" target="_blank" class="btn btn-primary mt-4">&nbsp;Shadwrocket<br>一键导入订阅</a></p>
 
-                                                     <p><a href="quantumult://configuration?server={$ssr_url_0}&filter={$filterUrl}&rejection={$rejectUrl}" target="_blank" class="btn btn-primary mt-4">&nbsp;Quantumult<br>一键导入订阅&规则</a></p>
-												{else}
-													<p>SSR 995端口订阅地址</p>
-													<p>
-													<code style="color: purple !important"><a class="copy-text" data-clipboard-text="{$baseUrl}/link/{$ssr_sub_token}?mu=1">{$baseUrl}/link/{$ssr_sub_token}?mu=1</a></code>
-													</p>
-													 <p><a href="Shadowrocket://add/sub://{$ssr_url_1}?remarks=MIMEMI%20Cloud 995单端口" target="_blank" class="btn btn-primary mt-4">&nbsp;Shadwrocket<br>一键导入订阅</a></p>
-
-                                                     <p><a href="quantumult://configuration?server={$ssr_url_1}&filter={$filterUrl}&rejection={$rejectUrl}" target="_blank" class="btn btn-primary mt-4">&nbsp;Quantumult<br>一键导入订阅&规则</a></p>
-													
-												{/if}
-											</div>
-										</div>
 										<div class="tab-pane fade" id="all_ss" role="tabpanel" aria-labelledby="all_ss-tab">
 											{if URL::SSCanConnect($user)}
 												<p>SSD 订阅地址</p>
@@ -239,86 +198,33 @@
 											{/if}
 										
 										</div>
-											<div class="tab-pane fade" id="all_v2" role="tabpanel" aria-labelledby="all_v2-tab">
-												<p>V4 宅男养成计划(Netflix账号 每月更新)</p>
-												{if $user->class>=4}
-												<font color='purple'>
-													11011@mimemi.org
-													<br>
-													11012@mimemi.org
-													<br>
-													110103@mimemi.org
-													<br>
-													11014@mimemi.org
-												</font>
-												<br>
-												密码:<br><font color="purple">
 
-												mimemi</font>
-												{else}
-												<font color='red'>抱歉,您还不是VIP4,所以您不能享受此计划</font>
-												<font><b>购买套餐<a href="/user/shop">点击这里</a></b></font>
-												{/if}
-												
-												</div>
-
-												<div class="tab-pane fade" id="all_other" role="tabpanel" aria-labelledby="all_other-tab">
-												{$pre_user = URL::cloneUser($user)}
-												{$user = URL::getSSRConnectInfo($pre_user)}
-												{$ssr_url_all = URL::getAllUrl($pre_user, 0, 0)}
-												{$ssr_url_all_mu = URL::getAllUrl($pre_user, 1, 0)}
-												{$user = URL::getSSConnectInfo($pre_user)}
-												{$ss_url_all = URL::getAllUrl($pre_user, 0, 1)}
-												{$ss_url_all_mu = URL::getAllUrl($pre_user, 1, 1)}
-												{$ss_url_all_win = URL::getAllUrl($pre_user, 0, 2)}
-												<p>备用订阅地址</p>
-												<P style="color: black !important; font-weight: bold;">请将订阅地址的mimemi.org部分替换为mimemi.club</P>
-												<p>
-												示例(其他地址同理)：
-												<code style="color: purple !important"><a class="copy-text" data-clipboard-text="{$baseUrl}/link/{$ssr_sub_token}?mu=0">https://www.mimemi.club/link/{$ssr_sub_token}?mu=0</a></code>
-												</p>
-												<br>
+										<div class="tab-pane fade" id="all_ssr" role="tabpanel" aria-labelledby="all_ssr-tab">
+											<div style="padding:18px">
 												{if URL::SSRCanConnect($user)}
-												<p>备用导入节点方法 - 电脑端 - SSR</p>
-												<p>点击&nbsp&nbsp<a class="copy-text" data-clipboard-text="{$ssr_url_all}"><code style="color: red !important">这里(普通端口)</code></a>或者<a class="copy-text" data-clipboard-text="{$ssr_url_all_mu}"><code style="color: red !important">&nbsp&nbsp这个(995端口）</code></a>，然后右键小飞机->从剪贴板复制地址</p>
-												<br>
+													<p>SSR 普通端口订阅地址</p>
+													<p>
+													<code style="color: purple !important"><a class="copy-text" data-clipboard-text="{$baseUrl}/link/{$ssr_sub_token}?mu=0">{$baseUrl}/link/{$ssr_sub_token}?mu=0</a></code>
+													</p>
+													<p>SSR 单端口订阅地址</p>
+													<p>
+													<code style="color: purple !important"><a class="copy-text" data-clipboard-text="{$baseUrl}/link/{$ssr_sub_token}?mu=1">{$baseUrl}/link/{$ssr_sub_token}?mu=1</a></code>
+													</p>
+													 <p><a href="Shadowrocket://add/sub://{$ssr_url_0}?remarks=MIMEMI%20Cloud" target="_blank" class="btn btn-primary mt-4">&nbsp;Shadwrocket<br>一键导入订阅</a></p>
 
-
-												<p>备用导入节点方法 - 电脑端 - SSR - Json导入</p>
-												<p>下载<a href="/user/getpcconf?is_mu=0&is_ss=0">这个(普通端口)</a>或者<a href="/user/getpcconf?is_mu=1&is_ss=0">这个(995端口)</a>，右键小飞机 服务器 -- 从配置文件导入服务器，选择这个文件，</p>
-												<br>
-												<p>备用导入节点方法 - 手机端 - SSR</p>
-												<p>在手机上默认浏览器中点击<a href="{$ssr_url_all}">这个链接(普通端口)</a>或者<a href="{$ssr_url_all_mu}">这个链接(995端口)</a>，然后点击确定</p>
-												{/if}
-												{if URL::SSCanConnect($user)}
-												<p>备用导入节点方法 - 电脑端 - SS</p>
-												<p>
-												(2)点击<a class="copy-text" data-clipboard-text="{$ss_url_all_win}">这里（普通端口）</a>, 然后右键小飞机 -- 从剪贴板导入 URL</p>
-												<br>
-
-												<p>备用导入节点方法 - 电脑端 - SS - Json</p>
-												下载<a href="/user/getpcconf?is_mu=0&is_ss=1">这个(普通端口)</a>，放到小飞机的目录下，然后打开小飞机。<br>
-												<br>
-												
-
-												<p>备用导入节点方法 - 手机端 - SS</p>
-												在系统自带浏览器中点击<a href="{$ss_url_all}">这个（普通端口）</a>然后点击确定，就可以批量添加节点。</p>
-												{/if}
-												</div>
-
-
-
-												<!-- VIP Club-->
-												<div class="tab-pane fade" id="all_vip" role="tabpanel" aria-labelledby="all_vip-tab">
-												<p>Telegram VIP Club</p>
-												{if $user->class>=2}
-												<font color='purple'>
-													<a href="https://t.me/joinchat/GB7fekvCIS56kD-WXbpZYA" target="_blank" class="btn btn-primary mt-4">点击加入</a>
-												</font>
-												<br>
+                                                     <p><a href="quantumult://configuration?server={$ssr_url_0}&filter={$filterUrl}&rejection={$rejectUrl}" target="_blank" class="btn btn-primary mt-4">&nbsp;Quantumult<br>一键导入订阅&规则</a></p>
 												{else}
+													<p>SSR 单端口订阅地址</p>
+													<p>
+													<code style="color: purple !important"><a class="copy-text" data-clipboard-text="{$baseUrl}/link/{$ssr_sub_token}?mu=1">{$baseUrl}/link/{$ssr_sub_token}?mu=1</a></code>
+													</p>
+													 <p><a href="Shadowrocket://add/sub://{$ssr_url_1}?remarks=MIMEMI%20Cloud 995单端口" target="_blank" class="btn btn-primary mt-4">&nbsp;Shadwrocket<br>一键导入订阅</a></p>
+
+                                                     <p><a href="quantumult://configuration?server={$ssr_url_1}&filter={$filterUrl}&rejection={$rejectUrl}" target="_blank" class="btn btn-primary mt-4">&nbsp;Quantumult<br>一键导入订阅&规则</a></p>
+													
 												{/if}
-												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
