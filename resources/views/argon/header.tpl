@@ -8,9 +8,14 @@
 	<title>{$config["appName"]}</title>
 
 	<!-- css -->
+	<!-- <link href="/theme/material/css/base.min.css" rel="stylesheet"> -->
+	<!-- <link href="/theme/material/css/project.min.css" rel="stylesheet"> -->
+	<!-- cdn -->
 	<link href="/theme/material/css/base.min.css" rel="stylesheet">
 	<link href="/theme/material/css/project.min.css" rel="stylesheet">
-	<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.loli.net/css?family=Roboto:300,300italic,400,400italic,500,500italic" rel="stylesheet">
+	<link href="https://fonts.loli.net/css?family=Material+Icons">
+	<!-- <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 	
 	<!-- favicon -->
 	<!-- ... -->
@@ -60,7 +65,7 @@
 	<nav aria-hidden="true" class="menu menu-left nav-drawer nav-drawer-md" id="ui_menu" tabindex="-1">
 		<div class="menu-scroll">
 			<div class="menu-content">
-				<a class="menu-logo" href="/"><i class="icon icon-lg">restaurant_menu</i>&nbsp;菜单</a>
+				<a class="menu-logo" href="/"><i class="icon icon-lg">restaurant_menu</i>&nbsp;首页</a>
 				<ul class="nav">
 					<li>
 						<a  href="/"><i class="icon icon-lg">bookmark_border</i>&nbsp;首页</a>
