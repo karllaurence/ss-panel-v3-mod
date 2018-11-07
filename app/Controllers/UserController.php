@@ -72,6 +72,7 @@ class UserController extends BaseController
 
         // 一键生成小火箭/Quan配置
         $ssr_url_0 = Tools::base64_url_encode(Config::get('baseUrl').'/link/'.$ssr_sub_token.'?mu=0');
+        $ssr_url_1 = Tools::base64_url_encode(Config::get('baseUrl').'/link/'.$ssr_sub_token.'?mu=1');
         $filterUrl = Tools::base64_url_encode('https://raw.githubusercontent.com/lhie1/Rules/master/Quantumult/Quantumult.conf');
         $rejectUrl = Tools::base64_url_encode('https://raw.githubusercontent.com/lhie1/Rules/master/Quantumult/Quantumult_URL.conf');
 
