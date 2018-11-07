@@ -1,79 +1,115 @@
-{include file='newui_header.tpl'}
-  <main>
-    <section class="section section-shaped section-lg my-0">
-      <div class="shape shape-style-1 bg-gradient-default">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="container pt-lg-md">
-        <div class="row justify-content-center">
-          <div class="col-lg-5">
-            <div class="card bg-secondary shadow border-0">
-              <div class="card-body px-lg-5 py-lg-5">
-                <div class="text-center text-muted mb-4">
-                  <small>注册账号</small>
-                </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
-                      </div>
-                      <input class="form-control" placeholder="昵称" type="text" id="name" >
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                      </div>
-					  <input class="form-control" id="email" type="text" placeholder="邮箱" >
-                    </div>
-                  </div>
-					{if $enable_email_verify == 'true'}
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-key-25"></i></span>
-                      </div>
-                      <input class="form-control" placeholder="邮箱验证码" id="email_code" type="text">
-                    </div>
-							<button id="email_verify" class="btn btn-primary mt-4">获取验证码</button>
-                  </div>
-                {/if}
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                      </div>
-                      <input class="form-control" placeholder="密码" id="passwd" type="password">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                      </div>
-                      <input class="form-control" placeholder="重复密码" id="repasswd" type="password">
-                    </div>
-                  </div>							                       
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-key-25"></i></span>
-                      </div>
-                      <input class="form-control" placeholder="邀请码{if $enable_invite_code == 'false'}(没有就不填){/if}" id="code" type="text">
-                    </div>{if $enable_invite_code == 'true'}
-							<button id="view_code" data-toggle="modal" data-target="#reg_code" class="btn btn-primary mt-4">查看公共邀请码</button>
-                    {/if}
-                  </div>
-				  
-							{if $geetest_html != null}
+
+
+{include file='header.tpl'}
+
+
+<main class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-lg-push-4 col-sm-6 col-sm-push-3">
+					<section class="content-inner">
+						<div class="card">
+							<div class="card-main">
+<!-- 								<div class="card-header">
+									<div class="card-inner">
+										<h1 class="card-heading">和我签订契约，成为魔法少女吧。</h1>
+									</div>
+								</div> -->
+								<div class="card-inner">
+									<p class="text-center">
+										<span class="avatar avatar-inline avatar-lg">
+											<img alt="Login" src="/theme/material/images/users/avatar-001.jpg">
+										</span>
+									</p>
+									
+										<div class="form-group form-group-label">
+											<div class="row">
+												<div class="col-md-10 col-md-push-1">
+													<label class="floating-label" for="name">昵称</label>
+													<input class="form-control" id="name" type="text">
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group form-group-label">
+											<div class="row">
+												<div class="col-md-10 col-md-push-1">
+													<label class="floating-label" for="email">邮箱</label>
+													<input class="form-control" id="email" type="text">
+												</div>
+											</div>
+										</div>
+										
+										{if $enable_email_verify == 'true'}
+										<div class="form-group form-group-label">
+											<div class="row">
+												<div class="col-md-10 col-md-push-1">
+													<label class="floating-label" for="email_code">邮箱验证码</label>
+													<input class="form-control" id="email_code" type="text">
+													<button id="email_verify" class="btn btn-block btn-brand-accent waves-attach waves-light">获取验证码</button>
+												</div>
+											</div>
+										</div>
+										{/if}
+										
+										<div class="form-group form-group-label">
+											<div class="row">
+												<div class="col-md-10 col-md-push-1">
+													<label class="floating-label" for="passwd">密码</label>
+													<input class="form-control" id="passwd" type="password">
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group form-group-label">
+											<div class="row">
+												<div class="col-md-10 col-md-push-1">
+													<label class="floating-label" for="repasswd">重复密码</label>
+													<input class="form-control" id="repasswd" type="password">
+												</div>
+											</div>
+										</div>
+										
+										
+										<div class="form-group form-group-label">
+											<div class="row">
+												<div class="col-md-10 col-md-push-1">
+													<label class="floating-label" for="imtype">选择您的联络方式</label>
+													<select class="form-control" id="imtype">
+														<option></option>
+														<option value="1">微信</option>
+														<option value="2">QQ</option>
+														<option value="3">Google+</option>
+														<option value="4">Telegram</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										
+										
+										<div class="form-group form-group-label">
+											<div class="row">
+												<div class="col-md-10 col-md-push-1">
+													<label class="floating-label" for="wechat">在这输入联络方式账号</label>
+													<input class="form-control" id="wechat" type="text">
+												</div>
+											</div>
+										</div>
+										
+										
+										
+										{if $enable_invite_code == 'true'}
+											<div class="form-group form-group-label">
+												<div class="row">
+													<div class="col-md-10 col-md-push-1">
+														<label class="floating-label" for="code">邀请码</label>
+														<input class="form-control" id="code" type="text" value="{$code}">
+													</div>
+												</div>
+											</div>
+										{/if}
+										
+										{if $geetest_html != null}
 											<div class="form-group form-group-label">
 												<div class="row">
 													<div class="col-md-10 col-md-push-1">
@@ -82,90 +118,65 @@
 												</div>
 											</div>
 										{/if}
-						
-                <div class="custom-control custom-control-alternative custom-checkbox">
-                    <input class="custom-control-input" id="legal" name="legal" type="checkbox"> 
-                    <label class="custom-control-label" for="legal">
-                      <span>我已阅读<a href="/legal" target="_blank">《服务条款》</a>和<a href="/legal/privacy" target="_blank">《隐私条款》</a>，并且保证所录入信息的真实性(如有不实信息会导致账号被删除)</span>
-                    </label>
-                  </div>
-                  <div class="custom-control custom-control-alternative custom-checkbox">
-                    <input class="custom-control-input" id="oneclick_theme" name="oneclick_theme" type="checkbox"> 
-                    <label class="custom-control-label" for="oneclick_theme">
-                      <span>我是小白，需要更明了的操作方式</span>
-                    </label>
-                  </div>
-                  <div class="text-center">
-						 <button id="tos" type="submit" disabled class="btn btn-primary mt-4">注册</button>
-                  </div>
-              </div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-6">
-                <a href="/auth/login" class="text-light">
-                  <small>已经注册？请登录</small>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  
-						
-				<div class="modal fade" id="tos_modal" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-              <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                <div class="modal-content">
-                  <div class="modal-body">
-						{include file='reg_tos.tpl'}
+										
+										<div class="form-group">
+											<div class="row">
+												<div class="col-md-10 col-md-push-1">
+													<button id="tos" type="submit" class="btn btn-block btn-brand waves-attach waves-light">注册</button>
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<div class="row">
+												<div class="col-md-10 col-md-push-1">
+													<p>注册即代表同意<a href="/tos">服务条款</a>，以及保证所录入信息的真实性，如有不实信息会导致账号被删除。</p>
+													<p style="color: red">如果您未能收到邮件，请查看'垃圾邮件'中是否存在，并将<a>support@mimemi.me</a>加入白名单</p>
+												</div>
+											</div>
+										</div>
+									
+								</div>
+							</div>
 						</div>
-                  <div class="modal-footer">
-					<button class="btn btn-primary" data-dismiss="modal" type="button" id="cancel">我不服</button>
-					<button class="btn btn-primary" data-dismiss="modal" id="reg" type="button">同意</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-			<div class="modal fade" id="reg_code" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-              <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                <div class="modal-content">
-                  <div class="modal-body">
-											<tbody style="table-layout:fixed;" >
-                                          				{foreach $codes as $code}
-											<tr>
-												<td><a class="copy-text" data-clipboard-text="{$code->code}">{$code->code}</a></td>
-											</tr>
-                                              <br>
-													<button  class="copy-text btn btn-primary mt-4" data-clipboard-text="{$code->code}">复制邀请码</button>
-											{/foreach}
-                    </tbody>		
+						<div class="clearfix">
+							<p class="margin-no-top pull-left"><a class="btn btn-flat btn-brand waves-attach" href="/auth/login">已经注册？请登录</a></p>
 						</div>
-                </div>
-              </div>
-            </div>
-    </section>
-  </main></main>
-  
-						{include file='newui_dialog.tpl'}
-  
-						{include file='auth/auth_footer.tpl'}
+						
+						
+						
+								
+						{include file='dialog.tpl'}
+						
+						
+						<div aria-hidden="true" class="modal modal-va-middle fade" id="tos_modal" role="dialog" tabindex="-1">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-heading">
+										<h2 class="modal-title">注册 TOS</h2>
+									</div>
+									<div class="modal-inner">
+										{include file='reg_tos.tpl'}
+									</div>
+									<div class="modal-footer">
+										<p class="text-right"><button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" type="button" id="cancel">我不服</button><button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" id="reg" type="button">资慈</button></p>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</section>
+				</div>
+			</div>
+		</div>
+	</main>
+	
+{include file='footer.tpl'}
+
+
 
 <script>
-    $("#legal").click(function () {
-      if($('#legal').is(':checked')) {
-      $("#tos").removeAttr("disabled")
-      }else{
-      $('#tos').attr("disabled",true);
-      }
-      });
-  $(function(){
-	new Clipboard('.copy-text');
-});
-  $(".copy-text").click(function () {
-$("#code").val($(this).parent().parent().find("td:eq(0)").text());
-$("#reg_code").modal('hide')
-    	$("#result").modal();
-	$("#msg").html("已复制到您的剪贴板，请您继续接下来的操作。");
-});
     $(document).ready(function(){
         function register(){
 			
@@ -181,9 +192,8 @@ $("#reg_code").modal('hide')
                     passwd: $("#passwd").val(),
                     repasswd: $("#repasswd").val(),
 					wechat: $("#wechat").val(),
-                  	oneclick_theme: $("#oneclick_theme:checked").val(),
-					imtype: $("#imtype").val(), 
-					code: $("#code").val(){if $enable_email_verify == 'true'},
+					imtype: $("#imtype").val(){if $enable_invite_code == 'true'},
+					code: $("#code").val(){/if}{if $enable_email_verify == 'true'},
 					emailcode: $("#email_code").val(){/if}{if $geetest_html != null},
 					geetest_challenge: validate.geetest_challenge,
                     geetest_validate: validate.geetest_validate,
@@ -198,18 +208,21 @@ $("#reg_code").modal('hide')
                     }else{
                         $("#result").modal();
                         $("#msg").html(data.msg);
-                        setCookie('code','',0);
-                        $("#code").val(getCookie('code'));
-						document.getElementById("tos").disabled = false;
-						{if $geetest_html != null}
-						captcha.refresh();
-						{/if}
+			document.getElementById("tos").disabled = false; 
+
+			{if $geetest_html != null}
+			captcha.refresh();
+			{/if}
                     }
                 },
                 error:function(jqXHR){
-						$("#result").modal();
-                        $("#msg").html("注册成功");
-                        window.setTimeout("location.href='/auth/login'", {$config['jump_delay']});
+			$("#msg-error").hide(10);
+			$("#msg-error").show(100);
+			$("#msg-error-p").html("发生错误："+jqXHR.status);
+			document.getElementById("tos").disabled = false; 
+			{if $geetest_html != null}
+			captcha.refresh();
+			{/if}
                 }
             });
         }
@@ -241,13 +254,13 @@ $("#reg_code").modal('hide')
 			if(typeof validate == 'undefined')
 			{
 				$("#result").modal();
-                $("#msg").html("请滑动验证码来完成验证。(少数情况验证码会被广告屏蔽插件拦截，请添加到白名单或禁用插件。)");
+                $("#msg").html("请滑动验证码来完成验证。");
 				return;
 			}
 			
 			if (!validate) {
 				$("#result").modal();
-                $("#msg").html("请滑动验证码来完成验证。(少数情况验证码会被广告屏蔽插件拦截，请添加到白名单或禁用插件。)");
+                $("#msg").html("请滑动验证码来完成验证。");
 				return;
 			}
 			
@@ -282,6 +295,7 @@ function time(o) {
     $(document).ready(function () {
         $("#email_verify").click(function () {
 			time($("#email_verify"));
+			
             $.ajax({
                 type: "POST",
                 url: "send",
@@ -333,55 +347,9 @@ function time(o) {
 </script>
 
 {/if}
-<script>
-	{*dumplin：轮子1.js读取url参数*}
-	function getQueryVariable(variable)
-	{
-	       var query = window.location.search.substring(1);
-	       var vars = query.split("&");
-	       for (var i=0;i<vars.length;i++) {
-	            	var pair = vars[i].split("=");
-	            	if(pair[0] == variable){
-	            		return pair[1];
-	            	}
-	       }
-	       return "";
-	}
 
-	{*dumplin:轮子2.js写入cookie*}
-	function setCookie(cname,cvalue,exdays)
-	{
-	  var d = new Date();
-	  d.setTime(d.getTime()+(exdays*24*60*60*1000));
-	  var expires = "expires="+d.toGMTString();
-	  document.cookie = cname + "=" + cvalue + "; " + expires;
-	}
 
-	{*dumplin:轮子3.js读取cookie*}
-	function getCookie(cname)
-	{
-	  var name = cname + "=";
-	  var ca = document.cookie.split(';');
-	  for(var i=0; i<ca.length; i++) 
-	  {
-	    var c = ca[i].trim();
-	    if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-	  }
-	  return "";
-	}
 
-	{*dumplin:读取url参数写入cookie，自动跳转隐藏url邀请码*}
-	if (getQueryVariable('code')!=''){
-		setCookie('code',getQueryVariable('code'),30);
-		window.location.href='/auth/register';
-      } 
+
+
 	
-
-	{*dumplin:读取cookie，自动填入邀请码框*}
-	if ((getCookie('code'))!=''){
-		$("#code").val(getCookie('code'));
-		$("#invite_div").hide();
-    }
-	
-
-</script>

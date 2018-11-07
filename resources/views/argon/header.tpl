@@ -1,61 +1,19 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-    <link rel=”alternate” href=”{$config["baseUrl"]}” hreflang=”zh-cn” />
 	<meta charset="UTF-8">
 	<meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <link rel="icon shortcut" type="image/ico" href="{$config["baseUrl"]}/favicon.ico">
-	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" name="viewport"><meta property="og:type" content="website">
-  	<meta property="og:title" content="{$config["appName"]} | 更好的网络加速">
-  	<meta property="og:image" content="{$config["baseUrl"]}/favicon.ico">
-  	<meta property="og:description" content="{$config["appName"]} 可帮助您访问您喜欢的网站和服务，改善外服游戏体验，解锁限制地域访问的流媒体服务，力求达到让您满意的水平，为您开辟全球业务保驾护航。{$config["appName"]} 选用中国优化线路配合TCP拥塞控制算法，有效降低延时和网络抖动，更能承受诸多生产环境考验。">
-  	<meta name="keywords" content="Flyue, 飞悦, 流量中继, 互联网, 数据传输, 云服务, 加速器, 流量代理, 游戏加速, 网游加速, 回国加速, 国际加速, 网游加速器, 外服加速器, 海外游戏加速, steam加速, 好用的网游加速器, 海外网站解锁, 视频加速">
-	<meta name="description" content="{$config["appName"]} 可帮助您访问您喜欢的网站和服务，改善外服游戏体验，解锁限制地域访问的流媒体服务，力求达到让您满意的水平，为您开辟全球业务保驾护航。{$config["appName"]} 选用中国优化线路配合TCP拥塞控制算法，有效降低延时和网络抖动，更能承受诸多生产环境考验。">
-	<meta name="theme-color" content="#24292e">
- 	 <meta name="renderer" content="webkit">
-	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
-	<meta name="format-detection" content="telephone=no">
-	<meta http-equiv="Cache-Control" content="no-transform">
-	<meta http-equiv="Cache-Control" content="no-siteapp">
-  	<link rel="canonical" href="{$config["baseUrl"]}/">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" name="viewport">
+	<meta name="theme-color" content="#3f51b5">
 	<title>{$config["appName"]}</title>
 
 	<!-- css -->
-	<link href="https://cdn.godann.com/theme/material/css/base.css" rel="stylesheet">
-	<link href="https://cdn.godann.com/theme/material/css/project.min.css" rel="stylesheet">
-	<link href="https://cdn.godann.com/theme/material/css/Material+Icons.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://cdn.godann.com/theme/material/css/iconfont.css">
+	<link href="/theme/material/css/base.min.css" rel="stylesheet">
+	<link href="/theme/material/css/project.min.css" rel="stylesheet">
+	<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
 	<!-- favicon -->
 	<!-- ... -->
-  <script type="application/ld+json">{
-            "@context": "http://schema.org",
-            "@type": "Website",
-            "name": "Flyue | 更好的网络加速器",
-            "headline": "Flyue | 更好的网络加速器",
-            "author": {
-                "@type": "Organization",
-                "name": "{$config["appName"]}",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://cat.flyue.top/favicon.ico"
-                },
-                "description": "{$config["appName"]} 可帮助您访问您喜欢的网站和服务，改善外服游戏体验，解锁限制地域访问的流媒体服务，力求达到让您满意的水平，为您开辟全球业务保驾护航。{$config["appName"]} 选用中国优化线路配合TCP拥塞控制算法，有效降低延时和网络抖动，更能承受诸多生产环境考验。"
-            },
-            "url": "https://cat.flyue.top/",
-            "image": {
-                "@type": "ImageObject",
-                "url": "https://cat.flyue.top/favicon.ico"
-            },
-            "mainEntityOfPage": {
-                "@type": "Website",
-                "@id": "https://cat.flyue.top"
-            },
-            
-                "keywords": "Flyue, 飞悦, 流量中继, 互联网, 数据传输, 云服务, 加速器, 流量代理, 游戏加速, 网游加速, 回国加速, 国际加速, 网游加速器, 外服加速器, 海外游戏加速, steam加速, 好用的网游加速器, 海外网站解锁, 视频加速",
-            
-            "description": "{$config["appName"]} 可帮助您访问您喜欢的网站和服务，改善外服游戏体验，解锁限制地域访问的流媒体服务，力求达到让您满意的水平，为您开辟全球业务保驾护航。{$config["appName"]} 选用中国优化线路配合TCP拥塞控制算法，有效降低延时和网络抖动，更能承受诸多生产环境考验。"
-            }</script>
-
 </head>
 <body class="page-brand">
 	<header class="header header-transparent header-waterfall ui-header">
@@ -108,10 +66,10 @@
 						<a  href="/"><i class="icon icon-lg">bookmark_border</i>&nbsp;首页</a>
 					</li>
 					<li>
-						<a  href="/tos"><i class="icon icon-lg">text_format</i>&nbsp;TOS</a>
+						<a  href="/tos"><i class="icon icon-lg">text_format</i>&nbsp;服务条款</a>
 					</li>
 					<li>
-						<a  href="/help"><i class="icon icon-lg">help</i>&nbsp;帮助</a>
+						<a  href="/code"><i class="icon icon-lg">code</i>&nbsp;邀请码</a>
 					</li>
 					{if $user->isLogin}
 					<li>
@@ -132,5 +90,3 @@
 			</div>
 		</div>
 	</nav>
-
-	

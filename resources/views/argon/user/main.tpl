@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta content="IE=edge" http-equiv="X-UA-Compatible">
 	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" name="viewport">
-	<meta name="theme-color" content="#24292e">
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-	<title>{$config["appName"]} | 用户中心</title>
+	<meta name="theme-color" content="#ff9800">
+	<title>{$config["appName"]}</title>
 
 	
-
+	
 	<!-- css -->
-  	<link rel="stylesheet" href="https://cdn.godann.com/theme/material/css/mdui.min.css">
-	<script src="https://cdn.godann.com/theme/material/js/mdui.min.js"></script>
-	<link href="https://cdn.godann.com/theme/material/css/base.min.css" rel="stylesheet">
-	<link href="https://cdn.godann.com/theme/material/css/project.min.css" rel="stylesheet">
-	<link href="https://cdn.godann.com/theme/material/css/Material+Icons.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://cdn.godann.com/theme/material/css/iconfont.css">
+	<link href="/theme/material/css/base.min.css" rel="stylesheet">
+	<link href="/theme/material/css/project.min.css" rel="stylesheet">
+	<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+
+	
 	<!-- favicon -->
 	<!-- ... -->
 	<style>
@@ -179,7 +178,7 @@
 		}
 		
 		.page-orange .ui-content-header {
-			background-image: url(/theme/material/css/images/bg/black.jpg);
+			background-image: url(/theme/material/css/images/bg/purple.jpg);
 		}
 		
 		.content-heading {
@@ -188,10 +187,9 @@
 		}
 				
 	</style>
-	
 
 </head>
-<body class="page-orange" {if $user->isAdmin()}{else}oncontextmenu="self.event.returnValue=false"{/if}>
+<body class="page-orange">
 	<header class="header header-orange header-transparent header-waterfall ui-header">
 		<ul class="nav nav-list pull-left">
 			<div>
@@ -211,12 +209,6 @@
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li>
 							<a class="padding-right-lg waves-attach" href="/user/"><span class="icon icon-lg margin-right">account_box</span>用户中心</a>
-						</li>
-						<li>
-							<a class="padding-right-lg waves-attach" href="/user/profile"><span class="icon icon-lg margin-right">info</span>账户信息</a>
-						</li>
-						<li>
-							<a class="padding-right-lg waves-attach" href="/user/edit"><span class="icon icon-lg margin-right">sync_problem</span>资料编辑</a>
 						</li>
 						<li>
 							<a class="padding-right-lg waves-attach" href="/user/logout"><span class="icon icon-lg margin-right">exit_to_app</span>登出</a>
@@ -249,36 +241,85 @@
 						<ul class="menu-collapse collapse in" id="ui_menu_me">
 							<li>
 								<a href="/user">
-									<i class="icon icon-lg">recent_actors</i>&nbsp;用户中心
+									<i class="icon icon-lg">account_balance_wallet</i>&nbsp;用户中心
 								</a>
 							</li>
 							
 							
 							<li>
-							<a href="/user/invite">
-									<font color="#FF0000"><i class="icon icon-lg">loyalty</i>&nbsp;邀请返利</font>&nbsp;&nbsp;&nbsp;
+								<a href="/user/edit">
+									<i class="icon icon-lg">description</i>&nbsp;资料编辑
 								</a>
 							</li>
 							
 							<li>
-								<a href="" data-toggle="modal" data-target="#help_dl">
-									<i class="icon icon-lg">help</i>&nbsp;遇到问题了？
+								<a href="/user/invite">
+									<i class="icon icon-lg">lock_open</i>&nbsp;<font color="purple">邀请奖励</font>
 								</a>
 							</li>
+							
+
+							<li>
+								<a href="/user/node">
+									<i class="icon icon-lg">opacity</i>&nbsp;<font color="purple">节点列表</font>
+								</a>
+							</li>
+							
+							<li>
+								<a href="/help/windows" target="_blank">
+									<i class="icon icon-lg">code</i>&nbsp;<font color="purple">使用教程</font>
+								</a>
+							</li>
+
+							<li>
+								<a href="/user/relay">
+									<i class="icon icon-lg">compare_arrows</i>&nbsp;<font color="red">中转规则</font>
+								</a>
+							</li>
+							
+							{if $config['enable_donate']=='true'}
+							<li>
+								<a href="/user/donate">
+									<i class="icon icon-lg">attach_money</i>&nbsp;捐赠公示
+								</a>
+							</li>
+							{/if}
+							
+							
+						</ul>
+					<a class="waves-attach" data-toggle="collapse" href="#ui_menu_help">交易</a>
+						<ul class="menu-collapse collapse in" id="ui_menu_help">
+						
+						
+							<li>
+								<a href="/user/shop">
+									<i class="icon icon-lg">shop</i>&nbsp;<font color="red">套餐购买</font>
+								</a>
+							</li>
+							
+							<li>
+								<a href="/user/code">
+									<i class="icon icon-lg">favorite</i>&nbsp;<font color="red">账户充值</font>
+								</a>
+							</li>
+
+							<li><a href="/user/yftOrder"><i class="icon icon-lg">shopping_cart</i>&nbsp;<font color="red">充值记录</font></a></li>
+							<li><a href="/user/bought"><i class="icon icon-lg">shopping_cart</i>&nbsp;购买记录</a></li>
 							
 						</ul>
 						
 						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_use">使用</a>
-						<ul class="menu-collapse collapse in" id="ui_menu_use">
+						<ul class="menu-collapse collapse " id="ui_menu_use">
 							<li>
-								<a href="/user/node">
-									<i class="icon icon-lg">router</i>&nbsp;节点列表
+								<a href="/user/announcement">
+									<i class="icon icon-lg">announcement</i>&nbsp;查看公告
 								</a>
 							</li>
 							
+
 							<li>
-								<a href="/user/detect/log">
-									<i class="icon icon-lg">assignment_late</i>&nbsp;审计记录
+								<a href="/user/profile">
+									<i class="icon icon-lg">assignment_late</i>&nbsp;账户信息
 								</a>
 							</li>
 							
@@ -288,54 +329,65 @@
 								</a>
 							</li>
 							
+							<li>
+								<a href="/user/lookingglass">
+									<i class="icon icon-lg">youtube_searched_for</i>&nbsp;延迟检测
+								</a>
+							</li>
 						</ul>
 
-						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_help">交易</a>
-						<ul class="menu-collapse collapse in" id="ui_menu_help">
+						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_detect">审计</a>
+						<ul class="menu-collapse collapse " id="ui_menu_detect">
+							<li><a href="/user/detect"><i class="icon icon-lg">account_balance</i>&nbsp;审计规则</a></li>
+							<li><a href="/user/detect/log"><i class="icon icon-lg">assignment_late</i>&nbsp;审计记录</a></li>
+						</ul>
+						
+						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_trade">帮助</a>
+						<ul class="menu-collapse collapse " id="ui_menu_trade">
+							{if $config['enable_wecenter']=='true'}
 							<li>
-									<a href="/user/shop"><i class="icon icon-lg">shop</i>&nbsp;商店</a>
+								<a href="{$config["wecenter_url"]}" target="_blank">
+									<i class="icon icon-lg">help</i>&nbsp;问答系统
+								</a>
 							</li>
+							{/if}
 							
 							<li>
-							    <a href="/user/bought"><i class="icon icon-lg">shopping_cart</i>&nbsp;购买记录</a>
-						    </li>
-							
-							<li>
-								<a href="/user/code">
-									<font color="#FF0000"><i class="icon icon-lg">loyalty</i>&nbsp;充值</font>&nbsp;&nbsp;&nbsp;
+								<a href="/user/ticket">
+									<i class="icon icon-lg">question_answer</i>&nbsp;工单系统
 								</a>
 							</li>
 						</ul>
+
 						
+<!-- 						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_help">交易</a>
+						<ul class="menu-collapse collapse in" id="ui_menu_help">
+						
+						
+							<li>
+								<a href="/user/shop">
+									<i class="icon icon-lg">shop</i>&nbsp;<font color="red">套餐购买</font>
+								</a>
+							</li>
+							
+							<li><a href="/user/bought"><i class="icon icon-lg">shopping_cart</i>&nbsp;购买记录</a></li>
+							
+							
+
+
+							<li>
+								<a href="/user/code">
+									<i class="icon icon-lg">favorite</i>&nbsp;<font color="red">账户充值</font>
+								</a>
+							</li>
+						</ul> -->
 						
 						{if $user->isAdmin()}
-						<a class="waves-attach" data-toggle="collapse" href="#ui_menu_admin">管理员选项</a>
-						<ul class="menu-collapse collapse in" id="ui_menu_admin">
-						
-							<li>
-								<a href="/admin/tg_notify">
-									<i class="icon icon-lg">person_pin</i>&nbsp;发送TG消息
-								</a>
-							</li>	
-                          
-                          		<li>
-								<a href="/admin/push">
-									<i class="icon icon-lg">notifications</i>&nbsp;推送消息
-								</a>
-							</li>
-                          
-							<li>
-								<a href="/user/donate">
-									<i class="icon icon-lg">payment</i>&nbsp;收入详情
-								</a>
-							</li>
-							
-							
 							<li>
 								<a href="/admin">
 									<i class="icon icon-lg">person_pin</i>&nbsp;管理面板
 								</a>
-							</li>	
+							</li>
 						{/if}
 
 
@@ -347,6 +399,3 @@
 			</div>
 		</div>
 	</nav>
-
-
-	{include file='help_dialog.tpl'}

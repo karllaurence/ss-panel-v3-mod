@@ -1,26 +1,70 @@
-<div class="card-table">
-									<div class="table-responsive">
-										<table class="table">
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{$config["appName"]}</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="/favicon.ico"/>
+        <link rel="bookmark" href="/favicon.ico"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+		<link rel="stylesheet" href="assets/css/main.css"/>
+        <noscript><link rel="stylesheet" href="./assets/css/noscript.css" /></noscript>   
+
+  </head>
+  
+       <body>
+			<div id="wrapper">
+              <!--首页开始-->
+                          <div class="content">
+							<div class="inner">
+								<h1 style="text-align:center;">邀请码管理</h1>
+								<p><font color="red">本站不定期开放公开邀请码,如果此页面没有邀请码</font>
+								请加Telegram群组:<span style="color: red"><a href="https://t.me/LKFWorld" target="_blank">点击这里</a></span>或者QQ群:<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=7f66a5db4c31ec759e20370f7b76452afc0ee243ba464c1ffe79b4e7305f5258"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="低调低调啊" title="低调低调啊"></a>获取邀请码</p>
+                          </div>
+                        </div>
+								<p>{$config["appName"]} 的邀请码(<font color="red">点击邀请码直接注册</font>)</p>
+                                   <div class="table-wrapper">
+										<table>
 											<thead>
-											<tr>
-												<th>邀请码 (点击自动填写)</th>
-											</tr>
+												<tr>
+													<th>邀请码</th>
+                                                  <th>状态</th>
+												</tr>
 											</thead>
+                                             {foreach $codes as $code}
 											<tbody>
-											{foreach $codes as $code}
+												<tr>
 											<tr>
-												<td><a class="copy-text" data-clipboard-text="{$code->code}">{$code->code}</a></td>
+												<td><a href="/auth/register?code={$code->code}">{$code->code}</a></td>
+												<td>可用</td>
 											</tr>
-                                              <hr>
 											{/foreach}
-											</tbody>
-										</table>										
+                                              	</tbody>
+										</table>
 									</div>
-</div>
-<script>
-$(".copy-text").click(function () {
-$("#code_label").text("");
-$("#code").val($(this).parent().parent().find("td:eq(0)").text());
-$("#reg_code").modal('hide')
-});
-</script>
+ 
+                                        
+                             <!--底页按钮-->
+                           <nav>
+							<ul>  
+                          <a href="/" class="button">返回首页</a>
+                           </ul>
+						</nav>
+                 
+            
+                     <!-- 版权底部 -->
+                      <footer id="footer">
+                   <p class="copyright">&copy;2017-2018 {$config["appName"]}</p>
+                      </footer>
+              <!-- 版权结束 -->
+			 </div>
+                <!-- BG -->
+			<div id="bg"></div>
+	        	<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+         <script src="assets/js/main.js"></script>
+	</body>
+</html>

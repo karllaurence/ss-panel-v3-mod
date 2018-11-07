@@ -1,4 +1,4 @@
-{include file='admin/main.tpl'}
+{include file='user/main.tpl'}
 
 <main class="content">
     <div class="content-header ui-content-header">
@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-main">
                         <div class="card-inner">
-                            <p>系统中充值记录。</p>
+                            <p>系统中您的充值记录。</p>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                 <input type="hidden" id="countPage" value="{$countPage}">
                 <span>当前第{$currentPage}页</span>
                 <input type="hidden" id="currentPage" value="{$currentPage}">
-                <a class="btn btn-brand" href="/admin/yftOrder">首页</a>
+                <a class="btn btn-brand" href="/user/yftOrder">首页</a>
                 <a class="btn btn-brand" href="javascript:void(0)" id="pre" onclick="goto('pre')">上一页</a>
                 <a class="btn btn-brand" href="javascript:void(0)" id="nxt" onclick="goto('next')">下一页</a>
                 <a class="btn btn-brand" href="javascript:void(0)" id="end" onclick="goto('end')">尾页</a>
@@ -57,7 +57,7 @@
         </div>
     </div>
 </main>
-{include file='admin/footer.tpl'}
+{include file='user/footer.tpl'}
 <script>
     function goto(type) {
         var countPage = $("#countPage").val();
@@ -66,19 +66,19 @@
             if (currentPage == 1 || currentPage == ""){
                 $("#pre").removeAttr('onclick');
             }else {
-                window.location.href = "/admin/yftOrder?page=" + (currentPage - 1);
+                window.location.href = "/user/yftOrder?page=" + currentPage - 1;
             }
         }else if ("next" == type){
             if (currentPage == countPage){
                 $("#pre").removeAttr('onclick');
             }else {
-                window.location.href = "/admin/yftOrder?page=" + (currentPage + 1);
+                window.location.href = "/user/yftOrder?page=" + currentPage + 1;
             }
         }else if ("end" == type){
             if (countPage == currentPage){
                 $("#end").removeAttr('onclick');
             }else {
-                window.location.href = "/admin/yftOrder?page=" + countPage;
+                window.location.href = "/user/yftOrder?page=" + countPage;
             }
         }
     }

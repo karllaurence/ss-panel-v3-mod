@@ -1,71 +1,40 @@
 
 
 
+{include file='user/main.tpl'}
 
 
 
-{include file='user/newui_header.tpl'}
 
 
 
-  <main class="profile-page">
-    <section class="section-profile-cover section-shaped my-0">
-      <div class="shape shape-style-1 shape-default shape-skew alpha-4">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </section>
-    <section class="section section-skew">
-      <div class="container">
-        <div class="card card-profile shadow mt--300">
-          <div class="px-4">
-            <div class="row justify-content-center">
-              <div class="col-lg-3 order-lg-2" >
-              </div> 
-              <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                <div class="card-profile-actions py-4 mt-lg-0">
-                  <a href="/user" class="btn btn-sm btn-primary">用户中心</a>
-                  <a href="/user/shop" class="btn btn-sm btn-default float-right">商店</a>
-                </div>
-              </div>
-              <div class="col-lg-4 order-lg-1">
-                <div class="card-profile-stats d-flex justify-content-center">
-                  <div>
-                    <span class="heading">{$user->money}</span>
-                    <span class="description">剩余金币</span>
-                  </div>
-                  <div>
-                    <span class="heading">L{$user->class}</span>
-                    <span class="description">等级</span>
-                  </div>
-                  <div>
-                    <span class="heading">{$user->online_ip_count()}</span>
-                    <span class="description">在线设备数</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-			
-						 <div class="row row-grid justify-content-between align-items-center mt-lg">
-			<div class="col-lg">
-                <div class="card card-lift shadow border-0">
-                  <div class="card-body">
+
+	<main class="content">
+		<div class="content-header ui-content-header">
+			<div class="container">
+				<h1 class="content-heading">创建工单</h1>
+			</div>
+		</div>
+		<div class="container">
+			<div class="col-lg-12 col-sm-12">
+				<section class="content-inner margin-top-no">
+					
+					<div class="card">
+						<div class="card-main">
+							<div class="card-inner">
 								<div class="form-group form-group-label">
 									<label class="floating-label" for="title">标题</label>
 									<input class="form-control" id="title" type="text" >
 								</div>
-                  </div>
-                </div>
-            </div>				
-            </div>	
-						 <div class="row row-grid justify-content-between align-items-center mt-lg">	
-			<div class="col-lg">
-                <div class="card card-lift shadow border-0">
+								
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="card">
+						<div class="card-main">
+							<div class="card-inner">
 								<div class="form-group form-group-label">
 									<label class="floating-label" for="content">内容</label>
 									<link rel="stylesheet" href="/theme/material/editor/css/editormd.min.css" />
@@ -73,33 +42,50 @@
 										<textarea style="display:none;" id="content"></textarea>
 									</div>
 								</div>
-                  </div>
-                </div>
-                </div>
-						 <div class="row row-grid justify-content-between align-items-center mt-lg">	
-			<div class="col-lg">
-                <div class="card card-lift shadow border-0">
-                  <div class="card-body">
-							<button id="submit" type="submit" class="btn btn-primary mt-4">添加</button>
-                  </div>
-                </div>
-            </div>		
-            </div>
-        </div>
+								
+								
+								
+								
+							</div>
+						</div>
+					</div>
+					
+					
+					
+					<div class="card">
+						<div class="card-main">
+							<div class="card-inner">
+								
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-10 col-md-push-1">
+											<button id="submit" type="submit" class="btn btn-block btn-brand waves-attach waves-light">添加</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					{include file='dialog.tpl'}
 
+							
+			</div>
 			
-          </div>
-        </div>
-      </div>
-      
-    </section>
-    
-
-	
-{include file='newui_dialog.tpl'}
+			
+			
+		</div>
+	</main>
 
 
-{include file='user/newui_footer.tpl'}
+
+
+
+
+{include file='user/footer.tpl'}
+
+
+
 
 <script src="/theme/material/editor/editormd.min.js"></script>
 <script>
@@ -154,3 +140,10 @@
         */
     });
 </script>
+
+
+
+
+
+
+
