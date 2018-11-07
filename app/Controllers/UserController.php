@@ -68,6 +68,13 @@ class UserController extends BaseController
 
         $ssr_sub_token = LinkController::GenerateSSRSubCode($this->user->id, 0);
 
+        $surge_url_1 = urlencode(Config::get('baseUrl').'/link/'.$ios_token.'?is_ss=1'); 
+
+        // 一键生成小火箭/Quan配置
+        $ssr_url_0 = Tools::base64_url_encode(Config::get('baseUrl').'/link/'.$ssr_sub_token.'?mu=0');
+        $filterUrl = Tools::base64_url_encode('https://raw.githubusercontent.com/lhie1/Rules/master/Quantumult/Quantumult.conf');
+        $rejectUrl = Tools::base64_url_encode('https://raw.githubusercontent.com/lhie1/Rules/master/Quantumult/Quantumult_URL.conf');
+
         $uid = time().rand(1, 10000) ;
         if (Config::get('enable_geetest_checkin') == 'true') {
             $GtSdk = Geetest::get($uid);
@@ -79,6 +86,10 @@ class UserController extends BaseController
 
 
         return $this->view()->assign("ssr_sub_token", $ssr_sub_token)->assign("router_token", $router_token)
+                ->assign("ssr_url_0", $ssr_url_0)
+                ->assign("filterUrl", $filterUrl)
+                ->assign("rejectUrl", $rejectUrl)
+                ->assign("surge_url_1", $surge_url_1)
                 ->assign("router_token_without_mu", $router_token_without_mu)->assign("acl_token", $acl_token)
                 ->assign('ann', $Ann)->assign('geetest_html', $GtSdk)->assign("ios_token", $ios_token)
                 ->assign('enable_duoshuo', Config::get('enable_duoshuo'))->assign('duoshuo_shortname', Config::get('duoshuo_shortname'))
