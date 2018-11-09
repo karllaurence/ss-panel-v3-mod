@@ -4,151 +4,207 @@
 
 
 
+{include file='user/newui_header.tpl'}
 
 
 
+  <main class="profile-page">
+    <section class="section-profile-cover section-shaped my-0">
+      <div class="shape shape-style-1 shape-default shape-skew alpha-4">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+    <section class="section section-skew">
+      <div class="container">
+        <div class="card card-profile shadow mt--300">
+          <div class="px-4">
+            <div class="row justify-content-center">
+              <div class="col-lg-3 order-lg-2" >
+              </div> 
+              <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+                <div class="card-profile-actions py-4 mt-lg-0">
+                  <a href="/user" class="btn btn-sm btn-primary">用户中心</a>
+                  <a href="/user/node" class="btn btn-sm btn-default float-right">节点列表</a>
+                </div>
+              </div>
+              <div class="col-lg-4 order-lg-1">
+                <div class="card-profile-stats d-flex justify-content-center">
+                  <div>
+                    <span class="heading">{$user->money}</span>
+                    <span class="description">剩余金币</span>
+                  </div>
+                  <div>
+                    <span class="heading">L{$user->class}</span>
+                    <span class="description">等级</span>
+                  </div>
+                  <div>
+                    <span class="heading">{$user->online_ip_count()}</span>
+                    <span class="description">在线设备数</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+			
+			
+			
+			
+			
+			        <div class="row row-grid justify-content-between align-items-center mt-lg">
+					
+					
+						<div class="col-lg-6">
+                <div class="card card-lift shadow border-0">
+                  <div class="card-body">
+				  
+				  
+              <p class="card-heading">说明</p>
+										<p>您每邀请1位用户注册：</p>
+										<p>对方充值时您还会获得对方充值金额的 <code>{$config["code_payback"]} %</code> 的返利。</p>
+										<p class="card-heading">已获得返利：<code>{$paybacks_sum}</code> 元</p>
+                    <button class="btn btn-primary mt-4" onClick="txqq()" type="button" id="txqq" >申请提现</button>
+					
+					
+					
+					
+                  </div>
+                </div>
+            </div>			
+			
+			
+			<div class="col-lg-6">
+                <div class="card card-lift shadow border-0">
+                  <div class="card-body">
+				  
+				  
+				  
+						<h6 class="category">您的邀请链接</h6>
+						<h2 class="card-title">
+						<p><code>{$config["baseUrl"]}/auth/register?code={$code->code}</code></p>
+										<p>剩余可邀请次数：{if $user->invite_num<0}无限{else}<code>{$user->invite_num}</code>{/if}</p>
+                    <button  class="copy-text btn btn-primary mt-4"  data-clipboard-text="{$config["baseUrl"]}/auth/register?code={$code->code}">点击复制链接</button>
+					
+					
+					
+					
+                  </div>
+                </div>
+            </div>
+			
+			
+			
+			
+        </div>
+			
+			
+            <div class="mt-5 py-5 text-center">
+              <div class="row justify-content-center">
+                <div class="col-lg-11">
+						{$paybacks->render()}
+						<table class="table ">
+							<tr>
 
+                             <!--   <th>ID</th> -->
+                                <th>ID</th>
+								<th>被邀请用户ID</th>
+								<th>获得返利</th>
+                            </tr>
+                            {foreach $paybacks as $payback}
+                            <tr>
 
+                          <!--       <td>#{$payback->id}</td> -->
+                                <td>{$payback->id}</td>
+								<td>{$payback->userid}</td>
+								<td>{$payback->ref_get} 元</td>
 
+                            </tr>
+                            {/foreach}
+                        </table>
+						{$paybacks->render()}
+                </div>
+              </div>
+            </div>
+			
+			
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    
 
-
-
-
-{include file='user/main.tpl'}
-
-
-
-
-
-
-
-	<main class="content">
-		<div class="content-header ui-content-header">
-			<div class="container">
-				<h1 class="content-heading">邀请奖励</h1>
-			</div>
-		</div>
-		<div class="container">
-			<section class="content-inner margin-top-no">
-				<div class="row">
-				
-					<div class="col-lg-12 col-md-12">
-						<div class="card margin-bottom-no">
-							<div class="card-main">
-								<div class="card-inner">
-									<div class="card-inner">
-										<p class="card-heading"><i class="icon icon-md">warning</i> 注意！！！</p>
-
-										<p><i class="icon icon-md">warning</i>邀请码请给你认识或你认为可靠的人注册使用，邀请有记录，若被邀请的人违反用户协议，您将会有连带责任。</p>
-
-										<p><i class="icon icon-md">warning</i>切勿使用自己的邀请码换邮箱注册多个帐户，系统有记录判断，一经发现，将连带所有帐户删除并不提供解释机会，请珍惜你的帐户。</p>
+	<div class="modal fade"  id="tx_modal" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-title-default">信息确认</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+									<p><font color="red">请在下方输入您的支付宝账户以及真实姓名，我们核实后会将奖励金发送至您账户</font></p>	
+									<p><font color="red">我们采集姓名仅做账号核实，不会公开您的信息。详情可见 <a href="{$config["baseUrl"]}/legal/privacy">《隐私策略》</a></font></p>						   
+									<div class="form-group form-group-label">
+										<label class="floating-label" for="alipay">支付宝账户</label>
+										<input class="form-control" id="alipay" type="number"> 
+									</div>									
+									<div class="form-group form-group-label">
+										<label class="floating-label" for="alipayname">真实姓名</label>
+										<input class="form-control" id="alipayname" type="text" >
 									</div>
-									
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-lg-12 col-md-12">
-						<div class="card margin-bottom-no">
-							<div class="card-main">
-								<div class="card-inner">
-									<div class="card-inner">
-										<p class="card-heading"><i class="icon icon-md">rate_review</i> 说明</p>
-
-										<p><i class="icon icon-md">monetization_on</i>邀请码暂时无法购买，请珍惜。</p>
-
-										<p><i class="icon icon-md">monetization_on</i>当有用户需要邀请码时，你可以生成你的邀请码并发给他。</p>
-										
-										<p><i class="icon icon-md">monetization_on</i>您每拉一位用户注册，当 TA 充值时您就会获得 TA 充值金额的 <code>{$config["code_payback"]} %</code> 的提成。</p>
-										
-										<p><i class="icon icon-md">monetization_on</i><a href="/user/profile" title="点击查看">我的邀请奖励记录</a></p>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-lg-12 col-md-12">
-						<div class="card margin-bottom-no">
-							<div class="card-main">
-								<div class="card-inner">
-									<div class="card-inner">
-										<p class="card-heading">邀请</p>
-										<p>当前您可以生成<code>{$user->invite_num}</code>个邀请码。 </p>
-									</div>
-									{if $user->invite_num }
-									<div class="card-action">
-										<div class="card-action-btn pull-left">
-											
-												<button id="invite" class="btn btn-flat waves-attach">生成我的邀请码</button>
-											
-										</div>
-									</div>
-									{/if}
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-lg-12 col-md-12">
-						<div class="card margin-bottom-no">
-							<div class="card-main">
-								
-									<div class="card-inner">
-									
-										<div class="card-table">
-											<div class="table-responsive">
-											{$codes->render()}
-												<table class="table">
-													<thead>
-													<tr>
-														<th>###</th>
-														<th>邀请码(点右键复制链接)</th>
-														<th>状态</th>
-													</tr>
-													</thead>
-													<tbody>
-													{foreach $codes as $code}
-														<tr>
-															<!-- <b>{$code->id}</b> --><td><b>{$code->id}</b></td>
-															
-															<td><a href="/auth/register?code={$code->code}" target="_blank">{$code->code}</a>
-															</td>
-															<td>可用</td>
-															<!-- <a class="copy-text" data-clipboard-text="{$code->code}">点击复制</a> -->
-														</tr>
-													{/foreach}
-													</tbody>
-												</table>
-											{$codes->render()}
-											</div>
-										</div>
-									
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					
-					
-					{include file='dialog.tpl'}
-				</div>
-			</section>
-		</div>
-	</main>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"  id="tx_input" type="button">确定</button>
+            </div>
+        </div>
+    </div>
+    </div>
+	
+	
+	
+{include file='newui_dialog.tpl'}
 
 
-
-
-
-
-
-{include file='user/footer.tpl'}
-
+{include file='user/newui_footer.tpl'}
 
 <script>
+function txqq() {
+	$("#tx_modal").modal();
+}
+	$(function(){
+		new Clipboard('.copy-text');
+	});
+
+	$(".copy-text").click(function () {
+		$("#result").modal();
+		$("#msg").html("已复制到您的剪贴板，请您继续接下来的操作。");
+	});
+  
+    $(document).ready(function () {
+        $("#czye").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/user/invite_czye",
+                dataType: "json",
+                success: function (data) {
+                    $("#result").modal();
+					$("#msg").html(data.msg);
+                },
+                error: function (jqXHR) {
+                    $("#result").modal();
+					$("#msg").html("发生错误：" + jqXHR.status);
+                }
+            })
+        })
+    })  
+  
     $(document).ready(function () {
         $("#invite").click(function () {
             $.ajax({
@@ -164,6 +220,61 @@
                 }
             })
         })
+    })    
+  $(document).ready(function () {
+        $("#tx_input").click(function () {
+			$("#tx_modal").modal();
+            $.ajax({
+                type: "POST",
+                url: "/user/invite_txqq",
+                dataType: "json",
+				data: {
+				alipay: $("#alipay").val(),
+				alipayname: $("#alipayname").val()
+				},
+                success: function (data) {
+                    $("#result").modal();
+					$("#msg").html(data.msg);
+                },
+                error: function (jqXHR) {
+                    $("#result").modal();
+					$("#msg").html("发生错误：" + jqXHR.status);
+                }
+            })
+        })
     })
 </script>
 
+<script>
+{include file='table/js_1.tpl'}
+
+$("#buy-invite").click(function () {
+    $.ajax({
+        type: "POST",
+        url: "/user/buy_invite",
+        dataType: "json",
+        data: {
+            num: $("#buy-invite-num").val(),
+        },
+        success: function (data) {
+             if (data.ret) {
+     			$("#result").modal();
+				$("#msg").html(data.msg);
+				window.setTimeout("location.href='/user/invite'", {$config['jump_delay']});
+	        } else {
+                $("#result").modal();
+			    $("#msg").html(data.msg);
+            }
+	    },
+        error: function (jqXHR) {
+            $("#result").modal();
+        	$("#msg").html(data.msg+"     出现了一些错误。");
+        }
+    })
+});
+
+$(document).ready(function(){
+ 	{include file='table/js_2.tpl'}
+});
+
+</script>

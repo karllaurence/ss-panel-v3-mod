@@ -17,9 +17,6 @@
             <li class="nav-item">
               <a href="https://docs.mimemi.org" class="nav-link" target="_blank">文档中心</a>
             </li>
-            <li class="nav-item">
-              <a href="/staff" class="nav-link" >致谢</a>
-            </li>
           </ul>
         </div>
       </div>

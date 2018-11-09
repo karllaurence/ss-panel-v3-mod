@@ -44,7 +44,7 @@
 										<span class="description">余额</span>
 									</div>
 									<div>
-										<span class="heading">VIP{$user->class}</span>
+										<span class="heading">{$user->class}</span>
 										<span class="description">等级</span>
 									</div>
 									<div>
@@ -76,9 +76,9 @@
 <!-- checkin -->
 <div class="row">
                     {if $user->isAbleToCheckin() == 1}
-                    <button id="checkin" class="btn btn-primary mt-4" style="margin-left: 1rem;">签到<br>（-233M ～ 2888M）</button>
+                    <button id="checkin" class="btn btn-primary mt-4" style="margin-left: 1rem;">签到</button>
                     {else}
-                    <button disabled="disabled" class="btn btn-primary mt-4" style="margin-left: 1rem;">已签到<br>（-233M ～ 2888M）</button>
+                    <button disabled="disabled" class="btn btn-primary mt-4" style="margin-left: 1rem;">已签到</button>
                     {/if}
 					   <p class="col mt-4" style="text-align: right;">
                      <span style="color:#B5B5B5;font-size: 18px" title="{number_format(($user->transfer_enable-($user->u+$user->d))/$user->transfer_enable*100,2)}% 剩余">已用：{$user->LastusedTraffic()}</span>

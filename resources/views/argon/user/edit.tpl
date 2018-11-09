@@ -187,7 +187,6 @@
 								
 									<div class="card-inner">
 										<p class="card-heading">重置端口</p>
-										<p>对号码不满意？来摇号吧～！</p>
 										<p>重置后1分钟内生效</p>
 										<p>当前端口：<code id="ajax-user-port">{$user->port}</code></p>
 									</div>
@@ -197,23 +196,23 @@
             </div>	
 			
 			
-				<!-- <div class="col-lg-6">
-                <div class="card card-lift shadow border-0">
-                  <div class="card-body">
-										<p class="card-heading">主题修改</p>
-										<p>当前主题：{$user->theme}</p>
-										<div class="form-group form-group-label">
-											<label class="floating-label" for="theme">主题</label>
-											<select id="theme" class="form-control">
-												{foreach $themes as $theme}
-													<option value="{$theme}">{$theme}</option>
-												{/foreach}
-											</select>
-										</div>
-								<button class="btn btn-primary mt-4"  id="theme-update">&nbsp;提交</button>
-                  </div>
-                </div>
-            </div>	 -->
+			<div class="col-lg-6">
+           <div class="card card-lift shadow border-0">
+             <div class="card-body">
+							<p class="card-heading">主题修改</p>
+							<p>当前主题：{$user->theme}</p>
+							<div class="form-group form-group-label">
+								<label class="floating-label" for="theme">主题</label>
+								<select id="theme" class="form-control">
+									{foreach $themes as $theme}
+										<option value="{$theme}">{$theme}</option>
+									{/foreach}
+								</select>
+							</div>
+					<button class="btn btn-primary mt-4"  id="theme-update">&nbsp;提交</button>
+             </div>
+           </div>
+       </div>
 			
 	<!-- 		<div class="col-lg-6">
                 <div class="card card-lift shadow border-0">
