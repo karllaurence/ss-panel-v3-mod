@@ -140,8 +140,8 @@
                   </div>
             </div>				
           </div>
+	{/if}
 	{/foreach}
-		{/if}
 {/foreach}
         </div>
 			
