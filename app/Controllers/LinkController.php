@@ -410,37 +410,36 @@ class LinkController extends BaseController
         return json_encode($json, JSON_PRETTY_PRINT);
     }
 
-    public static function utf8_substr($str,$start=0) {
-        if(empty($str)){
-            return false;
-        }
-        if (function_exists('mb_substr')){
-            if(func_num_args() >= 3) {
-                $end = func_get_arg(2);
-                return mb_substr($str,$start,$end,'utf-8');
-            }
-            else {
-                mb_internal_encoding("UTF-8");
-                return mb_substr($str,$start);
-            }       
-     
-        }
-        else {
-            $null = "";
-            preg_match_all("/./u", $str, $ar);
-            if(func_num_args() >= 3) {
-                $end = func_get_arg(2);
-                return join($null, array_slice($ar[0],$start,$end));
-            }
-            else {
-                return join($null, array_slice($ar[0],$start));
-            }
-        }
-    }
-
-
     public static function GetIosConf($user, $is_mu = 0, $is_ss = 0)
     {
+        function utf8_substr($str,$start=0) {
+            if(empty($str)){
+                return false;
+            }
+            if (function_exists('mb_substr')){
+                if(func_num_args() >= 3) {
+                    $end = func_get_arg(2);
+                    return mb_substr($str,$start,$end,'utf-8');
+                }
+                else {
+                    mb_internal_encoding("UTF-8");
+                    return mb_substr($str,$start);
+                }       
+         
+            }
+            else {
+                $null = "";
+                preg_match_all("/./u", $str, $ar);
+                if(func_num_args() >= 3) {
+                    $end = func_get_arg(2);
+                    return join($null, array_slice($ar[0],$start,$end));
+                }
+                else {
+                    return join($null, array_slice($ar[0],$start));
+                }
+            }
+        }
+        
         $proxy_name="";
         $proxy_group="";
         $domestic_name="";
