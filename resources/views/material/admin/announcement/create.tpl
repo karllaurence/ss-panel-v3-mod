@@ -46,15 +46,6 @@
 								<div class="form-group">
 									<div class="row">
 										<div class="col-md-10 col-md-push-1">
-											<div class="form-group form-group-label">
-	                                          	<label class="floating-label" for="vip">VIP等级（发送给高于这个等级的用户 0为不分级）</label>
-												<input class="form-control" id="vip" type="text" name="vip">
-	                                        	<div class="checkbox switch">
-												<label for="issend">
-													<input class="access-hide" id="issend" type="checkbox" name="issend"><span class="switch-toggle"></span>是否发送邮件
-												</label>
-												</div>
-											</div>
 											<button id="submit" type="submit" class="btn btn-block btn-brand waves-attach waves-light">添加</button>
 										</div>
 									</div>
@@ -87,14 +78,6 @@
 <script>
     $(document).ready(function () {
         function submit() {
-
-        	if(document.getElementById('issend').checked) {
-				var issend=1;
-			}
-			else {
-				var issend=0;
-			}
-
             $.ajax({
                 type: "POST",
                 url: "/admin/announcement",
