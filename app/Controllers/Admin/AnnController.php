@@ -3,6 +3,8 @@
 namespace App\Controllers\Admin;
 
 use App\Models\User;
+use App\Services\Config;
+
 use App\Models\Ann;
 use App\Controllers\AdminController;
 use App\Utils\Telegram;
