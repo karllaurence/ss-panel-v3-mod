@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Models\User;
 use App\Services\Config;
+use App\Services\Mail;
 
 use App\Models\Ann;
 use App\Controllers\AdminController;
