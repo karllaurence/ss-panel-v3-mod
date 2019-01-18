@@ -413,8 +413,37 @@ class LinkController extends BaseController
 
     public static function GetIosConf($user, $is_mu = 0, $is_ss = 0)
     {
+        function utf8_substr($str,$start=0) {
+            if(empty($str)){
+                return false;
+            }
+            if (function_exists('mb_substr')){
+                if(func_num_args() >= 3) {
+                    $end = func_get_arg(2);
+                    return mb_substr($str,$start,$end,'utf-8');
+                }
+                else {
+                    mb_internal_encoding("UTF-8");
+                    return mb_substr($str,$start);
+                }       
+         
+            }
+            else {
+                $null = "";
+                preg_match_all("/./u", $str, $ar);
+                if(func_num_args() >= 3) {
+                    $end = func_get_arg(2);
+                    return join($null, array_slice($ar[0],$start,$end));
+                }
+                else {
+                    return join($null, array_slice($ar[0],$start));
+                }
+            }
+        }
+        
         $proxy_name="";
         $proxy_group="";
+        $domestic_name="";
 
         $general = file_get_contents("https://raw.githubusercontent.com/lhie1/black-hole/master/OldGeneral.conf");
         $rule = file_get_contents("https://raw.githubusercontent.com/lhie1/black-hole/master/Rule.conf");
@@ -426,7 +455,7 @@ class LinkController extends BaseController
         $items = URL::getAllItems($user, $is_mu, $is_ss);
         foreach($items as $item) {
             $proxy_group .= $item['remark'].' = custom,'.$item['address'].','.$item['port'].','.$item['method'].','.$item['passwd'].','.Config::get('baseUrl').'/downloads/SSEncrypt.module'.URL::getSurgeObfs($item).',tfo=true'."\n";
-            if (substr($item['remark'],0,2) == "CN") {
+            if (utf8_substr($item['remark'],0,2) == "中國") {
                 $domestic_name .= ",".$item['remark'];
             } else {
                 $proxy_name .= ",".$item['remark'];
