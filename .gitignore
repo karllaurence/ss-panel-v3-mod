@@ -6,3 +6,4 @@ public/.user.ini
 storage/*
 config/.config.php
 resources/views/material/analytics.tpl
+.DS_Store
