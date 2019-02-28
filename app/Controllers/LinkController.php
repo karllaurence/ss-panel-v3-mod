@@ -212,10 +212,10 @@ class LinkController extends BaseController
                 }
 
                 if ($clash == 1) {
-                    $filename = 'bgpcloud.yml';
+                    $filename = '233.yml';
                 }
                 else {
-                    $filename = 'bgpcloud.conf';
+                    $filename = '233.conf';
                 }
                 // end
 
