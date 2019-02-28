@@ -194,12 +194,10 @@
 														{/if}
 													</div>
 													<div class="tab-pane fade" id="all_ss_windows">
-														<p><a href="/downloads/SS-Win.zip">下载</a>，解压，运行程序，然后您有两种方式导入所有节点<br>
-															(1)下载<a href="/user/getpcconf?is_mu=0&is_ss=1">这个（普通端口）</a>，放到小飞机的目录下，然后打开小飞机。<br>
-															(2)点击<a class="copy-text" data-clipboard-text="{$ss_url_all_win}">这里（普通端口）</a>, 然后右键小飞机 -- 从剪贴板导入 URL<br>
+														<p>下载 <a href="/downloads/SS-Win.zip">Clash</a>，然后通过<a href="/link/{$ios_token}?is_ss=1&is_mu=0&clash=1">这个（普通端口）</a>或者<a href="/link/{$ios_token}?is_ss=1&is_mu=1&clash=1">这个（单端口多用户，推荐）</a>，导入到 Clash 中，然后就可以随意切换服务器上网了。</p>
 													</div>
 													<div class="tab-pane fade" id="all_ss_mac">
-														<p><a href="/downloads/SS-macOS.zip">下载</a>，安装，然后下载<a href="/user/getpcconf?is_mu=0&is_ss=1">这个（普通端口）</a>或者<a href="/user/getpcconf?is_mu=1&is_ss=1">这个（单端口多用户，推荐）</a>，运行程序，小飞机上右键 服务器列表 子菜单 的 “导入服务器配置文件...” 导入这个文件，然后选择一个合适的服务器，更新一下PAC，然后开启系统代理即可上网。</p>
+														<p>下载 <a href="/downloads/SS-macOS.dmg">Clash</a>，然后通过<a href="/link/{$ios_token}?is_ss=1&is_mu=0&clash=1">这个（普通端口）</a>或者<a href="/link/{$ios_token}?is_ss=1&is_mu=1&clash=1">这个（单端口多用户，推荐）</a>，导入到 Clash 中，然后就可以随意切换服务器上网了。</p>
 														<p>或者可以下载 <a href="https://nssurge.com/mac/Surge-latest.zip">Surge for macOS</a> (需要有有效授权)，然后下载<a href="/link/{$ios_token}?is_ss=1">这个（普通端口）</a>或者<a href="/link/{$ios_token}?is_ss=1&is_mu=1">这个（单端口多用户，推荐）</a>，导入到 Surge for macOS 中，然后就可以随意切换服务器上网了。</p>
 													</div>
 													<div class="tab-pane fade" id="all_ss_ios">
