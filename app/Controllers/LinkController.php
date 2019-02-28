@@ -488,12 +488,11 @@ class LinkController extends BaseController
             array_push($proxy_clash["proxies"], "DIRECT");
             // add
             array_push($domestic_clash["proxies"], "DIRECT");
-            array_push($domestic_clash["proxies"], "Proxy");
             array_push($others_clash["proxies"], "Proxy");
             array_push($others_clash["proxies"], "DIRECT");
-            array_push($china_media_clash["proxies"], "DIRECT");
             array_push($china_media_clash["proxies"], "Domestic");
             array_push($china_media_clash["proxies"], "Proxy");
+            array_push($china_media_clash["proxies"], "DIRECT");
             array_push($global_media_clash["proxies"], "Proxy");
             array_push($global_media_clash["proxies"], "DIRECT");
             // end
