@@ -478,8 +478,6 @@ class LinkController extends BaseController
             $clash_array = $clash_array + yaml_parse($general);
             $clash_array["Proxy"] = array();
             $clash_array["Proxy Group"] = array();
-            $auto_clash = array('name' => "Auto", 'type' => "url-test", 'proxies' => array(), 'url' => "http://captive.apple.com", 'interval' => '1200');
-            $fallback_auto_clash = array('name' => "fallback", 'type' => "fallback", 'proxies' => array(), 'url' => "http://captive.apple.com", 'interval' => '1200');
             $proxy_clash = array('name' => "Proxy", 'type' => "select", 'proxies' => array());
             // add
             $domestic_clash = array('name' => "Domestic", 'type' => "select", 'proxies' => array());
@@ -487,8 +485,6 @@ class LinkController extends BaseController
             $china_media_clash = array('name' => "Domestic_media", 'type' => "select", 'proxies' => array());
             $global_media_clash = array('name' => "Foreign_media", 'type' => "select", 'proxies' => array());
             // end
-            array_push($proxy_clash["proxies"], "Auto");
-            array_push($proxy_clash["proxies"], "fallback");
             array_push($proxy_clash["proxies"], "DIRECT");
             // add
             array_push($domestic_clash["proxies"], "DIRECT");
@@ -532,9 +528,6 @@ class LinkController extends BaseController
                 }
                 array_push($clash_array["Proxy"], $em);
                 array_push($proxy_clash["proxies"], $em["name"]);
-                array_push($auto_clash["proxies"], $em["name"]);
-                array_push($fallback_auto_clash["proxies"], $em["name"]);
-                // add
                 array_push($domestic_clash["proxies"], $em["name"]);
                 array_push($china_media_clash["proxies"], $em["name"]);
                 array_push($global_media_clash["proxies"], $em["name"]);
@@ -552,8 +545,6 @@ class LinkController extends BaseController
 
         // clash
         if ($clash == 1) {
-            array_push($clash_array["Proxy Group"], $auto_clash);
-            array_push($clash_array["Proxy Group"], $fallback_auto_clash);
             array_push($clash_array["Proxy Group"], $proxy_clash);
             // add
             array_push($clash_array["Proxy Group"], $domestic_clash);
