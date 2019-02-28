@@ -467,9 +467,10 @@ class LinkController extends BaseController
         $header = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Auto/Header%20Rewrite.conf");
         $rules = $rule."\n\n".$url_rewrite."\n".$url_reject."\n\n".$header;
 
+        $auto_name = "";
+        $proxy_list = "";
         $clash_array = array();
 
-        // clash
         // clash
         if ($clash == 1) {
             $general = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Clash/General.yml");
@@ -499,6 +500,7 @@ class LinkController extends BaseController
             array_push($global_media_clash["proxies"], "Proxy");
             array_push($global_media_clash["proxies"], "DIRECT");
             // end
+        } else {
         }
         // end
 
