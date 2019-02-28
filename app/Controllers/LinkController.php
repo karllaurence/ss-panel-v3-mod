@@ -492,13 +492,12 @@ class LinkController extends BaseController
             array_push($others_clash["proxies"], "Proxy");
             array_push($others_clash["proxies"], "DIRECT");
             array_push($china_media_clash["proxies"], "DIRECT");
+            array_push($china_media_clash["proxies"], "Domestic");
             array_push($china_media_clash["proxies"], "Proxy");
             array_push($global_media_clash["proxies"], "Proxy");
             array_push($global_media_clash["proxies"], "DIRECT");
             // end
-        } else {
         }
-        // end
 
         $items = URL::getAllItems($user, $is_mu, $is_ss);
         foreach($items as $item) {
@@ -527,10 +526,11 @@ class LinkController extends BaseController
                     unset($em['obfs-host']);
                 }
                 array_push($clash_array["Proxy"], $em);
-                array_push($proxy_clash["proxies"], $em["name"]);
-                array_push($domestic_clash["proxies"], $em["name"]);
-                array_push($china_media_clash["proxies"], $em["name"]);
-                array_push($global_media_clash["proxies"], $em["name"]);
+                if (utf8_substr($item['remark'],0,2) == "中國") {
+                    array_push($domestic_clash["proxies"], $em["name"]);
+                } else {
+                    array_push($proxy_clash["proxies"], $em["name"]);
+                }
                 // end
             }
             else {
