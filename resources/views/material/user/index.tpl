@@ -195,10 +195,10 @@
 														{/if}
 													</div>
 													<div class="tab-pane fade" id="all_ss_windows">
-														<p>下载 <a href="/downloads/SS-Win.zip">Clash</a>，然后通过<a href="/link/{$ios_token}?is_ss=1&is_mu=0&clash=1">这个（普通端口），导入到 Clash 中，然后就可以随意切换服务器上网了。</p>
+														<p>下载 <a href="/downloads/SS-Win.zip">Clash</a>，然后通过<a href="/link/{$ios_token}?is_ss=1&is_mu=0&clash=1">这个（普通端口）</a>，导入到 Clash 中，然后就可以随意切换服务器上网了。</p>
 													</div>
 													<div class="tab-pane fade" id="all_ss_mac">
-														<p>下载 <a href="/downloads/SS-macOS.dmg">Clash</a>，然后通过<a href="/link/{$ios_token}?is_ss=1&is_mu=0&clash=1">这个（普通端口），导入到 Clash 中，然后就可以随意切换服务器上网了。</p>
+														<p>下载 <a href="/downloads/SS-macOS.dmg">Clash</a>，然后通过<a href="/link/{$ios_token}?is_ss=1&is_mu=0&clash=1">这个（普通端口）</a>，导入到 Clash 中，然后就可以随意切换服务器上网了。</p>
 														<p>或者可以下载 <a href="https://nssurge.com/mac/Surge-latest.zip">Surge for macOS</a> (需要有有效授权)，然后下载<a href="/link/{$ios_token}?is_ss=1">这个（普通端口）</a>，导入到 Surge for macOS 中，然后就可以随意切换服务器上网了。</p>
 													</div>
 													<div class="tab-pane fade" id="all_ss_ios">
