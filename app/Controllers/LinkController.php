@@ -205,8 +205,24 @@ class LinkController extends BaseController
                     $is_mu = $request->getQueryParams()["is_mu"];
                 }
 
-                $newResponse = $response->withHeader('Content-type', ' application/octet-stream; charset=utf-8')->withHeader('Cache-Control', 'no-store, no-cache, must-revalidate')->withHeader('Content-Disposition', ' attachment; filename=allinone.conf');//->getBody()->write($builder->output());
-                $newResponse->getBody()->write(LinkController::GetIosConf($user, $is_mu, $is_ss));
+                // clash
+                $clash = 0;
+                if (isset($request->getQueryParams()["clash"])) {
+                    $clash = $request->getQueryParams()["clash"];
+                }
+
+                if ($clash == 1) {
+                    $filename = 'bgpcloud.yml';
+                }
+                else {
+                    $filename = 'bgpcloud.conf';
+                }
+                // end
+
+                $userinfo = "upload=".$user->u."; download=".$user->d.";total=".$user->transfer_enable;
+
+                $newResponse = $response->withHeader('Content-type', ' application/octet-stream; charset=utf-8')->withHeader('Cache-Control', 'no-store, no-cache, must-revalidate')->withHeader('Content-Disposition', ' attachment; filename='.$filename);
+                $newResponse->getBody()->write(LinkController::GetIosConf($user, $is_mu, $is_ss, $clash));
                 return $newResponse;
             case 3:
                 $type = "PROXY";
@@ -410,8 +426,7 @@ class LinkController extends BaseController
         return json_encode($json, JSON_PRETTY_PRINT);
     }
 
-
-    public static function GetIosConf($user, $is_mu = 0, $is_ss = 0)
+    public static function GetIosConf($user, $is_mu = 0, $is_ss = 0, $clash = 0)
     {
         function utf8_substr($str,$start=0) {
             if(empty($str)){
@@ -445,21 +460,99 @@ class LinkController extends BaseController
         $proxy_group="";
         $domestic_name="";
 
-        $general = file_get_contents("https://raw.githubusercontent.com/lhie1/black-hole/master/OldGeneral.conf");
-        $rule = file_get_contents("https://raw.githubusercontent.com/lhie1/black-hole/master/Rule.conf");
+        $general = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/DlerCloud/OldGeneral.conf");
+        $rule = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/DlerCloud/OldRule.conf");
         $url_rewrite = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Auto/URL%20Rewrite.conf");
         $url_reject = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Auto/URL%20REJECT.conf");
         $header = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Auto/Header%20Rewrite.conf");
         $rules = $rule."\n\n".$url_rewrite."\n".$url_reject."\n\n".$header;
 
+        $auto_name = "";
+        $proxy_list = "";
+        $clash_array = array();
+
+        // clash
+        if ($clash == 1) {
+            $general = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Clash/General.yml");
+            $rules = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Clash/Rule.yml");
+            $clash_array = $clash_array + yaml_parse($general);
+            $clash_array["Proxy"] = array();
+            $clash_array["Proxy Group"] = array();
+            $proxy_clash = array('name' => "Proxy", 'type' => "select", 'proxies' => array());
+            // add
+            $domestic_clash = array('name' => "Domestic", 'type' => "select", 'proxies' => array());
+            $others_clash = array('name' => "Others", 'type' => "select", 'proxies' => array());
+            $china_media_clash = array('name' => "Domestic_media", 'type' => "select", 'proxies' => array());
+            $global_media_clash = array('name' => "Foreign_media", 'type' => "select", 'proxies' => array());
+            // end
+            array_push($proxy_clash["proxies"], "DIRECT");
+            // add
+            array_push($domestic_clash["proxies"], "DIRECT");
+            array_push($others_clash["proxies"], "Proxy");
+            array_push($others_clash["proxies"], "DIRECT");
+            array_push($china_media_clash["proxies"], "Domestic");
+            array_push($china_media_clash["proxies"], "Proxy");
+            array_push($china_media_clash["proxies"], "DIRECT");
+            array_push($global_media_clash["proxies"], "Proxy");
+            array_push($global_media_clash["proxies"], "DIRECT");
+            // end
+        }
+
         $items = URL::getAllItems($user, $is_mu, $is_ss);
         foreach($items as $item) {
-            $proxy_group .= $item['remark'].' = custom,'.$item['address'].','.$item['port'].','.$item['method'].','.$item['passwd'].','.Config::get('baseUrl').'/downloads/SSEncrypt.module'.URL::getSurgeObfs($item).',tfo=true'."\n";
-            if (utf8_substr($item['remark'],0,2) == "中國") {
-                $domestic_name .= ",".$item['remark'];
-            } else {
-                $proxy_name .= ",".$item['remark'];
+            // clash
+            if ($clash == 1) {
+                $em["name"] = $item['remark'];
+                $em["type"] = "ss";
+                $em["server"] = $item['address'];
+                $em["port"]  = $item['port'];
+                $em["cipher"] = $item['method'];
+                $em["password"] = $item['passwd'];
+                if (array_key_exists('obfs', $item) && $item['obfs'] != '') {
+                    if (strpos($item['obfs'], 'http') != false) {
+                       $em["obfs"] = 'http';
+                    } elseif (strpos($item['obfs'], 'tls') != false) {
+                       $em["obfs"] = 'tls';
+                    }
+                    if (array_key_exists('obfs_param', $item) && $item['obfs_param'] != '') {
+                    $em["obfs-host"] = $item['obfs_param'];
+                    } else {
+                        unset($em['obfs-host']);
+                    }   
+                }
+                else {
+                    unset($em['obfs']);
+                    unset($em['obfs-host']);
+                }
+                array_push($clash_array["Proxy"], $em);
+                if (utf8_substr($item['remark'],0,2) == "中國") {
+                    array_push($domestic_clash["proxies"], $em["name"]);
+                } else {
+                    array_push($proxy_clash["proxies"], $em["name"]);
+                }
+                // end
             }
+            else {
+                $proxy_group .= $item['remark'].' = custom,'.$item['address'].','.$item['port'].','.$item['method'].','.$item['passwd'].','.Config::get('baseUrl').'/downloads/SSEncrypt.module'.URL::getSurgeObfs($item).',tfo=true'."\n";
+                if (utf8_substr($item['remark'],0,2) == "中國") {
+                    $domestic_name .= ",".$item['remark'];
+                } else {
+                    $proxy_name .= ",".$item['remark'];
+                }
+            }
+        }
+
+        // clash
+        if ($clash == 1) {
+            array_push($clash_array["Proxy Group"], $proxy_clash);
+            // add
+            array_push($clash_array["Proxy Group"], $domestic_clash);
+            array_push($clash_array["Proxy Group"], $others_clash);
+            array_push($clash_array["Proxy Group"], $china_media_clash);
+            array_push($clash_array["Proxy Group"], $global_media_clash);
+            // end
+            $clash_array = $clash_array + yaml_parse($rules);
+            return yaml_emit($clash_array);
         }
 
         return '#!MANAGED-CONFIG '.Config::get('baseUrl').''.$_SERVER['REQUEST_URI'].'
@@ -1533,6 +1626,26 @@ FINAL,Proxy';
 
     public static function GetSSRSub($user, $mu = 0, $max = 0)
     {
-        return Tools::base64_url_encode(URL::getAllUrl($user, $mu, 0, 1));
+        if ($mu == 0 || $mu == 1) {
+            return Tools::base64_url_encode(URL::getAllUrl($user, $mu, 0, 1));
+        } 
+        elseif ($mu == 2){
+            return Tools::base64_url_encode(URL::getAllVMessUrl($user));
+        }
+        elseif ($mu == 3) {
+            return Tools::base64_url_encode(URL::getAllSSDUrl($user));
+        }
+        elseif ($mu == 4) {
+            return base64_encode(URL::getAllUrl($user, 0, 1, 1));
+        }
+        elseif ($mu == 5) {
+            // Clash
+            $render = ConfRender::getTemplateRender();
+            $confs = URL::getClashInfo($user);
+             $render->assign('user', $user)->assign('confs', $confs)->assign('proxies', array_map(function ($conf) {
+                return $conf['name'];
+            }, $confs));
+             return $render->fetch('clash.tpl');
+        }
     }
 }
