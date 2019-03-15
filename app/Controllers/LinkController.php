@@ -482,8 +482,8 @@ class LinkController extends BaseController
             // add
             $domestic_clash = array('name' => "Domestic", 'type' => "select", 'proxies' => array());
             $others_clash = array('name' => "Others", 'type' => "select", 'proxies' => array());
-            $china_media_clash = array('name' => "Domestic_media", 'type' => "select", 'proxies' => array());
-            $global_media_clash = array('name' => "Foreign_media", 'type' => "select", 'proxies' => array());
+            $china_media_clash = array('name' => "AsianTV", 'type' => "select", 'proxies' => array());
+            $global_media_clash = array('name' => "GlobalTV", 'type' => "select", 'proxies' => array());
             // end
             array_push($proxy_clash["proxies"], "DIRECT");
             // add
