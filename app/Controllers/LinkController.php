@@ -482,8 +482,8 @@ class LinkController extends BaseController
             // add
             $domestic_clash = array('name' => "Domestic", 'type' => "select", 'proxies' => array());
             $others_clash = array('name' => "Others", 'type' => "select", 'proxies' => array());
-            $china_media_clash = array('name' => "Domestic_media", 'type' => "select", 'proxies' => array());
-            $global_media_clash = array('name' => "Foreign_media", 'type' => "select", 'proxies' => array());
+            $china_media_clash = array('name' => "AsianTV", 'type' => "select", 'proxies' => array());
+            $global_media_clash = array('name' => "GlobalTV", 'type' => "select", 'proxies' => array());
             // end
             array_push($proxy_clash["proxies"], "DIRECT");
             // add
@@ -593,8 +593,8 @@ Domestic = select,Direct'.$domestic_name.'
 Others = select,Proxy,Direct
 AdBlock = select,Ad-Block,Ad-Pass
 Apple = select,Direct'.$proxy_name.'
-Domestic_media = select,Domestic,Proxy,Direct
-Foreign_media = select,Proxy,Direct
+AsianTV = select,Domestic,Proxy,Direct
+GlobalTV = select,Proxy,Direct
 
 [Rule]
 '.$rules.'
