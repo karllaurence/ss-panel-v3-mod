@@ -593,8 +593,8 @@ Domestic = select,Direct'.$domestic_name.'
 Others = select,Proxy,Direct
 AdBlock = select,Ad-Block,Ad-Pass
 Apple = select,Direct'.$proxy_name.'
-China_media = select,Domestic,Proxy,Direct
-Global_media = select,Proxy,Direct
+AsianTV = select,Domestic,Proxy,Direct
+GlobalTV = select,Proxy,Direct
 
 [Rule]
 '.$rules.'
