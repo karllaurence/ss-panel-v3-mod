@@ -16,7 +16,7 @@ $System_Config['sessionDriver'] = 'cookie';
 $System_Config['cacheDriver'] = 'cookie';
 $System_Config['tokenDriver'] = 'db';
 
-//$System_Config['version'] = '<a href="https://www.zhaoj.in">Glzjin</a> mod-2016042210000';
+//$System_Config['version'] = '<a href="https://www.example.com">someone</a> mod-2016042210000';
 
 // mu key 用于校验ss-go mu的请求,半角逗号分隔
 $System_Config['muKey'] = '';
@@ -69,7 +69,7 @@ $System_Config['aws_access_key_id'] = '';
 $System_Config['aws_secret_access_key'] = '';
 
 
-#glzjin's time
+#someone's time
 
 #功能开关
 $System_Config['enable_wecenter']='false';
@@ -127,7 +127,7 @@ $System_Config['wecenter_db_database']='';
 $System_Config['wecenter_db_user']='';
 $System_Config['wecenter_db_password']='';
 
-#系统根域名 zhaoj.in 这样
+#系统根域名 example.com 这样
 $System_Config['wecenter_system_main_domain']='';
 
 #访问路径，不开启这个功能的话就清空这个设置项吧
@@ -151,7 +151,7 @@ $System_Config['reg_auto_reset_bandwidth']='100';
 #Cloudxns
 $System_Config['cloudxns_apikey']='';#自己去 cloudxns.net 申请
 $System_Config['cloudxns_apisecret']='';
-$System_Config['cloudxns_domain']='zhaoj.in';#你的域名
+$System_Config['cloudxns_domain']='example.com';#你的域名
 
 
 
