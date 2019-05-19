@@ -352,8 +352,6 @@
 									<i class="icon icon-lg">code</i>&nbsp;充值
 								</a>
 							</li>
-
-							<li><a href="/user/yftOrder"><i class="icon icon-lg">shopping_cart</i>&nbsp;充值记录</a></li>
 							
 						</ul>
 						
