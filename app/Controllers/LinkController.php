@@ -602,7 +602,6 @@ Apple = select,DIRECT,Domestic,Proxy
 AsianTV = select,Domestic,Proxy,DIRECT
 GlobalTV = select,Proxy,DIRECT
 
-[Rule]
 '.$rules.'
 
 ';
