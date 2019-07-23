@@ -482,19 +482,26 @@ class LinkController extends BaseController
             // add
             $domestic_clash = array('name' => "Domestic", 'type' => "select", 'proxies' => array());
             $others_clash = array('name' => "Others", 'type' => "select", 'proxies' => array());
-            $china_media_clash = array('name' => "AsianTV", 'type' => "select", 'proxies' => array());
-            $global_media_clash = array('name' => "GlobalTV", 'type' => "select", 'proxies' => array());
+            $adblock_clash = array('name' => "AdBlock", 'type' => "select", 'proxies' => array());
+            $apple_clash = array('name' => "Apple", 'type' => "select", 'proxies' => array());
+            $asiantv_clash = array('name' => "AsianTV", 'type' => "select", 'proxies' => array());
+            $globaltv_clash = array('name' => "GlobalTV", 'type' => "select", 'proxies' => array());
             // end
             array_push($proxy_clash["proxies"], "DIRECT");
             // add
             array_push($domestic_clash["proxies"], "DIRECT");
             array_push($others_clash["proxies"], "Proxy");
             array_push($others_clash["proxies"], "DIRECT");
-            array_push($china_media_clash["proxies"], "Domestic");
-            array_push($china_media_clash["proxies"], "Proxy");
-            array_push($china_media_clash["proxies"], "DIRECT");
-            array_push($global_media_clash["proxies"], "Proxy");
-            array_push($global_media_clash["proxies"], "DIRECT");
+            array_push($adblock_clash["proxies"], "REJECT");
+            array_push($adblock_clash["proxies"], "DIRECT");
+            array_push($apple_clash["proxies"], "DIRECT");
+            array_push($apple_clash["proxies"], "Domestic");
+            array_push($apple_clash["proxies"], "Proxy");
+            array_push($asiantv_clash["proxies"], "Domestic");
+            array_push($asiantv_clash["proxies"], "Proxy");
+            array_push($asiantv_clash["proxies"], "DIRECT");
+            array_push($globaltv_clash["proxies"], "Proxy");
+            array_push($globaltv_clash["proxies"], "DIRECT");
             // end
         }
 
@@ -548,8 +555,10 @@ class LinkController extends BaseController
             // add
             array_push($clash_array["Proxy Group"], $domestic_clash);
             array_push($clash_array["Proxy Group"], $others_clash);
-            array_push($clash_array["Proxy Group"], $china_media_clash);
-            array_push($clash_array["Proxy Group"], $global_media_clash);
+            array_push($clash_array["Proxy Group"], $adblock_clash);
+            array_push($clash_array["Proxy Group"], $apple_clash);
+            array_push($clash_array["Proxy Group"], $asiantv_clash);
+            array_push($clash_array["Proxy Group"], $globaltv_clash);
             // end
             $clash_array = $clash_array + yaml_parse($rules);
             return yaml_emit($clash_array);
@@ -582,21 +591,17 @@ ipv6 = true
 replica = false
 
 [Proxy]
-Direct = direct
-Ad-Block = reject
-Ad-Pass = direct
 '.$proxy_group.'
 
 [Proxy Group]
-Proxy = select,Direct'.$proxy_name.'
-Domestic = select,Direct'.$domestic_name.'
-Others = select,Proxy,Direct
-AdBlock = select,Ad-Block,Ad-Pass
-Apple = select,Direct'.$proxy_name.'
-AsianTV = select,Domestic,Proxy,Direct
-GlobalTV = select,Proxy,Direct
+Proxy = select,DIRECT'.$proxy_name.'
+Domestic = select,DIRECT'.$domestic_name.'
+Others = select,Proxy,DIRECT
+AdBlock = select,REJECT,DIRECT
+Apple = select,DIRECT,Domestic,Proxy
+AsianTV = select,Domestic,Proxy,DIRECT
+GlobalTV = select,Proxy,DIRECT
 
-[Rule]
 '.$rules.'
 
 ';
