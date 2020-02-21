@@ -603,6 +603,7 @@ Microsoft = select,Proxy,DIRECT
 Netease Music = select,Domestic,DIRECT
 Apple = select,DIRECT,Domestic,Proxy
 
+[Rule]
 '.$rules.'
 
 ';
