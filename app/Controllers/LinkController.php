@@ -574,9 +574,14 @@ class LinkController extends BaseController
             array_push($clash_array["Proxy Group"], $domestic_clash);
             array_push($clash_array["Proxy Group"], $others_clash);
             array_push($clash_array["Proxy Group"], $adblock_clash);
-            array_push($clash_array["Proxy Group"], $apple_clash);
             array_push($clash_array["Proxy Group"], $asiantv_clash);
             array_push($clash_array["Proxy Group"], $globaltv_clash);
+            array_push($clash_array["Proxy Group"], $telegram_clash);
+            array_push($clash_array["Proxy Group"], $steam_clash);
+            array_push($clash_array["Proxy Group"], $speedtest_clash);
+            array_push($clash_array["Proxy Group"], $microsoft_clash);
+            array_push($clash_array["Proxy Group"], $neteasemusic_clash);
+            array_push($clash_array["Proxy Group"], $apple_clash);
             // end
             $clash_array = $clash_array + yaml_parse($rules);
             return yaml_emit($clash_array);
