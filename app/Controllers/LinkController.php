@@ -558,7 +558,7 @@ class LinkController extends BaseController
                 // end
             }
             else {
-                $proxy_group .= $item['remark'].' = ss,'.$item['address'].','.$item['port'].',encrypt-method='.$item['method'].',password='.$item['passwd'].','.URL::getSurgeObfs($item).',udp-relay=true'."\n";
+                $proxy_group .= $item['remark'].' = ss,'.$item['address'].','.$item['port'].',encrypt-method='.$item['method'].',password='.$item['passwd'].URL::getSurgeObfs($item).',udp-relay=true'."\n";
                 if (utf8_substr($item['remark'],0,2) == "中國") {
                     $domestic_name .= ",".$item['remark'];
                 } else {
