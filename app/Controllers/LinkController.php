@@ -460,12 +460,14 @@ class LinkController extends BaseController
         $proxy_group="";
         $domestic_name="";
 
-        $general = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/DlerCloud/OldGeneral.conf");
-        $rule = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/DlerCloud/OldRule.conf");
+        $head = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/Head.conf");
+        $rule = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/Rule.conf");
         $url_rewrite = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Auto/URL%20Rewrite.conf");
         $url_reject = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Auto/URL%20REJECT.conf");
         $header = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Auto/Header%20Rewrite.conf");
-        $rules = $rule."\n\n".$url_rewrite."\n".$url_reject."\n\n".$header;
+        $mitm = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/MitM.conf");
+        $script = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/Script.conf");
+        $rules = $rule."\n\n".$url_rewrite."\n".$url_reject."\n\n".$header."\n\n".$mitm."\n\n".$script;
 
         $auto_name = "";
         $proxy_list = "";
@@ -473,9 +475,9 @@ class LinkController extends BaseController
 
         // clash
         if ($clash == 1) {
-            $general = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Clash/General.yml");
+            $head = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Clash/Head_dns.yml");
             $rules = file_get_contents("https://raw.githubusercontent.com/lhie1/Rules/master/Clash/Rule.yml");
-            $clash_array = $clash_array + yaml_parse($general);
+            $clash_array = $clash_array + yaml_parse($head);
             $clash_array["Proxy"] = array();
             $clash_array["Proxy Group"] = array();
             $proxy_clash = array('name' => "Proxy", 'type' => "select", 'proxies' => array());
@@ -483,9 +485,14 @@ class LinkController extends BaseController
             $domestic_clash = array('name' => "Domestic", 'type' => "select", 'proxies' => array());
             $others_clash = array('name' => "Others", 'type' => "select", 'proxies' => array());
             $adblock_clash = array('name' => "AdBlock", 'type' => "select", 'proxies' => array());
-            $apple_clash = array('name' => "Apple", 'type' => "select", 'proxies' => array());
             $asiantv_clash = array('name' => "AsianTV", 'type' => "select", 'proxies' => array());
             $globaltv_clash = array('name' => "GlobalTV", 'type' => "select", 'proxies' => array());
+            $telegram_clash = array('name' => "Telegram", 'type' => "select", 'proxies' => array());
+            $steam_clash = array('name' => "Steam", 'type' => "select", 'proxies' => array());
+            $speedtest_clash = array('name' => "Speedtest", 'type' => "select", 'proxies' => array());
+            $microsoft_clash = array('name' => "Microsoft", 'type' => "select", 'proxies' => array());
+            $neteasemusic_clash = array('name' => "Netease Music", 'type' => "select", 'proxies' => array());
+            $apple_clash = array('name' => "Apple", 'type' => "select", 'proxies' => array());
             // end
             array_push($proxy_clash["proxies"], "DIRECT");
             // add
@@ -494,14 +501,25 @@ class LinkController extends BaseController
             array_push($others_clash["proxies"], "DIRECT");
             array_push($adblock_clash["proxies"], "REJECT");
             array_push($adblock_clash["proxies"], "DIRECT");
-            array_push($apple_clash["proxies"], "DIRECT");
-            array_push($apple_clash["proxies"], "Domestic");
-            array_push($apple_clash["proxies"], "Proxy");
             array_push($asiantv_clash["proxies"], "Domestic");
             array_push($asiantv_clash["proxies"], "Proxy");
             array_push($asiantv_clash["proxies"], "DIRECT");
             array_push($globaltv_clash["proxies"], "Proxy");
             array_push($globaltv_clash["proxies"], "DIRECT");
+            array_push($telegram_clash["proxies"], "Proxy");
+            array_push($telegram_clash["proxies"], "DIRECT");
+            array_push($steam_clash["proxies"], "Proxy");
+            array_push($steam_clash["proxies"], "DIRECT");
+            array_push($speedtest_clash["proxies"], "Proxy");
+            array_push($speedtest_clash["proxies"], "Domestic");
+            array_push($speedtest_clash["proxies"], "DIRECT");
+            array_push($microsoft_clash["proxies"], "Proxy");
+            array_push($microsoft_clash["proxies"], "DIRECT");
+            array_push($neteasemusic_clash["proxies"], "Domestic");
+            array_push($neteasemusic_clash["proxies"], "DIRECT");
+            array_push($apple_clash["proxies"], "DIRECT");
+            array_push($apple_clash["proxies"], "Domestic");
+            array_push($apple_clash["proxies"], "Proxy");
             // end
         }
 
@@ -540,7 +558,7 @@ class LinkController extends BaseController
                 // end
             }
             else {
-                $proxy_group .= $item['remark'].' = custom,'.$item['address'].','.$item['port'].','.$item['method'].','.$item['passwd'].','.Config::get('baseUrl').'/downloads/SSEncrypt.module'.URL::getSurgeObfs($item).',tfo=true'."\n";
+                $proxy_group .= $item['remark'].' = ss,'.$item['address'].','.$item['port'].',encrypt-method='.$item['method'].',password='.$item['passwd'].','.URL::getSurgeObfs($item).',udp-relay=true'."\n";
                 if (utf8_substr($item['remark'],0,2) == "中國") {
                     $domestic_name .= ",".$item['remark'];
                 } else {
@@ -566,29 +584,7 @@ class LinkController extends BaseController
 
         return '#!MANAGED-CONFIG '.Config::get('baseUrl').''.$_SERVER['REQUEST_URI'].'
 
-[General]
-// Auto
-loglevel = notify
-dns-server = system,1.2.4.8,80.80.80.80,80.80.81.81,1.1.1.1,1.0.0.1
-skip-proxy = 127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,100.64.0.0/10,17.0.0.0/8,localhost,*.local,*.crashlytics.com,::ffff:0.0.0.0/1,::ffff:128.0.0.0/1
-
-// iOS
-external-controller-access = user@0.0.0.0:6170
-
-allow-wifi-access = true
-
-// macOS
-interface = 0.0.0.0
-socks-interface = 0.0.0.0
-port = 8888
-socks-port = 8889
-
-enhanced-mode-by-rule = false
-
-// Auto
-exclude-simple-hostnames = true
-ipv6 = true
-replica = false
+'.$head.'
 
 [Proxy]
 '.$proxy_group.'
@@ -598,9 +594,14 @@ Proxy = select,DIRECT'.$proxy_name.'
 Domestic = select,DIRECT'.$domestic_name.'
 Others = select,Proxy,DIRECT
 AdBlock = select,REJECT,DIRECT
-Apple = select,DIRECT,Domestic,Proxy
 AsianTV = select,Domestic,Proxy,DIRECT
 GlobalTV = select,Proxy,DIRECT
+Telegram = select,Proxy,DIRECT
+Steam = select,Proxy,DIRECT
+Speedtest = select,Proxy,Domestic,DIRECT
+Microsoft = select,Proxy,DIRECT
+Netease Music = select,Domestic,DIRECT
+Apple = select,DIRECT,Domestic,Proxy
 
 '.$rules.'
 
