@@ -550,7 +550,7 @@ class LinkController extends BaseController
                     unset($em['obfs-host']);
                 }
                 array_push($clash_array["Proxy"], $em);
-                if (utf8_substr($item['remark'],0,2) == "中國") {
+                if (utf8_substr($item['remark'],0,4) == "【回國】") {
                     array_push($domestic_clash["proxies"], $em["name"]);
                 } else {
                     array_push($proxy_clash["proxies"], $em["name"]);
@@ -559,7 +559,7 @@ class LinkController extends BaseController
             }
             else {
                 $proxy_group .= $item['remark'].' = ss,'.$item['address'].','.$item['port'].',encrypt-method='.$item['method'].',password='.$item['passwd'].URL::getSurgeObfs($item).',udp-relay=true'."\n";
-                if (utf8_substr($item['remark'],0,2) == "中國") {
+                if (utf8_substr($item['remark'],0,4) == "【回國】") {
                     $domestic_name .= ",".$item['remark'];
                 } else {
                     $proxy_name .= ",".$item['remark'];
