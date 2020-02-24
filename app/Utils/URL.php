@@ -397,7 +397,7 @@ class URL
         }
 
         $return_array['address'] = $node->server;
-        $return_array['port'] = $user->port;
+        //$return_array['port'] = $user->port;
         $return_array['passwd'] = $user->passwd;
         $return_array['method'] = $user->method;
         $return_array['remark'] = $node_name_split[0];
