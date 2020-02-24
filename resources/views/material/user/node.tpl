@@ -155,13 +155,7 @@
 																					</span></p>
 
 																					<p>端口：<span class="label label-brand-red">
-																						{if $single_muport['user']['obfs'] eq 'simple_obfs_http' and !empty($node_name_split[1])}
-																							{$node_name_split[1]}
-																						{elseif $single_muport['user']['obfs'] eq 'tls1.2_ticket_auth' and !empty($node_name_split[2])}
-																							{$node_name_split[2]}
-																						{else}
-																							{$single_muport['user']['port']}
-																						{/if}
+																						{$single_muport['user']['port']}
 																					</span></p>
 
 																					<p>加密方式：<span class="label label-brand">
