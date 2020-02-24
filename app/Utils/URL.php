@@ -353,6 +353,7 @@ class URL
         )->first();
 
         $node_name = $node->name;
+        $node_name_split = explode("#",$node_name);
 
         if ($relay_rule != null) {
             $node_name .= " - ".$relay_rule->dist_node()->name;
@@ -370,7 +371,7 @@ class URL
 
             $user = $mu_user;
 
-            $node_name .= " - ".$mu_port." 端口";
+            //$node_name .= " - ".$mu_port." 端口";
         }
 
         if($is_ss) {
@@ -378,26 +379,36 @@ class URL
                 return;
             }
             $user = URL::getSSConnectInfo($user);
+            if($mu_port != 0 && !empty($node_name_split[1])) {
+                $return_array['port'] = $node_name_split[1];
+            }else{
+                $return_array['port'] = $user->port;
+            }
         }else{
             if(!URL::SSRCanConnect($user)) {
                 return;
             }
             $user = URL::getSSRConnectInfo($user);
+            if($mu_port != 0 && !empty($node_name_split[2])) {
+                $return_array['port'] = $node_name_split[2];
+            }else{
+                $return_array['port'] = $user->port;
+            }
         }
 
         $return_array['address'] = $node->server;
-        $return_array['port'] = $user->port;
+        //$return_array['port'] = $user->port;
         $return_array['passwd'] = $user->passwd;
         $return_array['method'] = $user->method;
-        $return_array['remark'] = $node_name;
+        $return_array['remark'] = $node_name_split[0];
         $return_array['protocol'] = $user->protocol;
         $return_array['protocol_param'] = $user->protocol_param;
         $return_array['obfs'] = $user->obfs;
         $return_array['obfs_param'] = $user->obfs_param;
         $return_array['group'] = Config::get('appName');
-        if($mu_port != 0) {
+        /*if($mu_port != 0) {
             $return_array['group'] .= ' - 单端口多用户';
-        }
+        }*/
         return $return_array;
     }
 
