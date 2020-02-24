@@ -75,7 +75,9 @@ class NodeController extends AdminController
             return $response->getBody()->write(json_encode($rs));
         }
 
-        Telegram::Send("新节点添加~".$request->getParam('name'));
+        $node_name_split = explode("#",$request->getParam('name'));
+
+        Telegram::Send("新节点添加~".$node_name_split[0]);
 
         $rs['ret'] = 1;
         $rs['msg'] = "节点添加成功";
@@ -151,7 +153,9 @@ class NodeController extends AdminController
             return $response->getBody()->write(json_encode($rs));
         }
 
-        Telegram::Send("节点信息被修改~".$request->getParam('name'));
+        $node_name_split = explode("#",$request->getParam('name'));
+
+        Telegram::Send("节点信息被修改~".$node_name_split[0]);
 
         $rs['ret'] = 1;
         $rs['msg'] = "修改成功";
@@ -175,7 +179,9 @@ class NodeController extends AdminController
             return $response->getBody()->write(json_encode($rs));
         }
 
-        Telegram::Send("节点被删除~".$name);
+        $node_name_split = explode("#",$name);
+
+        Telegram::Send("节点被删除~".$node_name_split[0]);
 
         $rs['ret'] = 1;
         $rs['msg'] = "删除成功";
