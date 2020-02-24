@@ -45,6 +45,8 @@
 											{foreach $node_prefix as $prefix => $nodes}
 												{$id=$id+1}
 
+												{assign var="node_name_split" value="#"|explode:$prefix}
+
 													<div class="tile tile-collapse">
 														<div data-toggle="tile" data-target="#heading{$node_order->$prefix}">
 															<div class="tile-side pull-left" data-ignore="tile">
@@ -53,7 +55,7 @@
 																</div>
 															</div>
 															<div class="tile-inner">
-																<div class="text-overflow">{$prefix} | <i class="icon icon-lg">person</i> {$node_alive[$prefix]} | <i class="icon icon-lg">build</i> {$node_method[$prefix]} | <i class="icon icon-lg">traffic</i> {if isset($node_bandwidth[$prefix])==true}{$node_bandwidth[$prefix]}{else}N/A{/if}</div>
+																<div class="text-overflow">{$node_name_split[0]} | <i class="icon icon-lg">person</i> {$node_alive[$prefix]} | <i class="icon icon-lg">build</i> {$node_method[$prefix]} | <i class="icon icon-lg">traffic</i> {if isset($node_bandwidth[$prefix])==true}{$node_bandwidth[$prefix]}{else}N/A{/if}</div>
 															</div>
 														</div>
 														<div class="collapsible-region collapse" id="heading{$node_order->$prefix}">
@@ -142,7 +144,7 @@
 																				<div class="card-main">
 																					<div class="card-inner">
 																					<p class="card-heading" >
-																						<a href="javascript:void(0);" onClick="urlChange('{$node->id}',{$single_muport['server']->server},{if $relay_rule != null}{$relay_rule->id}{else}0{/if})">{$prefix} {if $relay_rule != null} - {$relay_rule->dist_node()->name}{/if} - 单端口多用户 Shadowsocks - {$single_muport['server']->server} 端口</a>
+																						<a href="javascript:void(0);" onClick="urlChange('{$node->id}',{$single_muport['server']->server},{if $relay_rule != null}{$relay_rule->id}{else}0{/if})">{$node_name_split[0]} {if $relay_rule != null} - {$relay_rule->dist_node()->name}{/if} - {if $single_muport['user']['obfs'] eq 'simple_obfs_http' and !empty($node_name_split[1])}{$node_name_split[1]}{elseif $single_muport['user']['obfs'] eq 'tls1.2_ticket_auth' and !empty($node_name_split[2])}{$node_name_split[2]}{else}{$single_muport['user']['port']}{/if} 端口</a>
 																						<span class="label label-brand-accent">{$node->status}</span>
 																					</p>
 
@@ -153,7 +155,13 @@
 																					</span></p>
 
 																					<p>端口：<span class="label label-brand-red">
-																						{$single_muport['user']['port']}
+																						{if $single_muport['user']['obfs'] eq 'simple_obfs_http' and !empty($node_name_split[1])}
+																							{$node_name_split[1]}
+																						{elseif $single_muport['user']['obfs'] eq 'tls1.2_ticket_auth' and !empty($node_name_split[2])}
+																							{$node_name_split[2]}
+																						{else}
+																							{$single_muport['user']['port']}
+																						{/if}
 																					</span></p>
 
 																					<p>加密方式：<span class="label label-brand">
