@@ -138,11 +138,13 @@
 																				{$relay_rule = $tools->pick_out_relay_rule($node->id, $single_muport['server']->server, $relay_rules)}
 																			{/if}
 
+																			{assign var=node_name_split value="#"|explode:$relay_rule->dist_node()->name}
+
 																			<div class="card">
 																				<div class="card-main">
 																					<div class="card-inner">
 																					<p class="card-heading" >
-																						<a href="javascript:void(0);" onClick="urlChange('{$node->id}',{$single_muport['server']->server},{if $relay_rule != null}{$relay_rule->id}{else}0{/if})">{$prefix} {if $relay_rule != null} - {$relay_rule->dist_node()->name}{/if} - 单端口多用户 Shadowsocks - {$single_muport['server']->server} 端口</a>
+																						<a href="javascript:void(0);" onClick="urlChange('{$node->id}',{$single_muport['server']->server},{if $relay_rule != null}{$relay_rule->id}{else}0{/if})">{$prefix} {if $relay_rule != null} - {$node_name_split[0]}{/if} - {$single_muport['server']->server} 端口</a>
 																						<span class="label label-brand-accent">{$node->status}</span>
 																					</p>
 
@@ -153,7 +155,15 @@
 																					</span></p>
 
 																					<p>端口：<span class="label label-brand-red">
-																						{$single_muport['user']['port']}
+																						node_name_split
+																						{if $single_muport['user']['obfs'] eq 'simple_obfs_http' and !empty($node_name_split[1])}
+																							{$node_name_split[1]}
+																						{elseif $single_muport['user']['obfs'] eq 'tls1.2_ticket_auth' and !empty($node_name_split[2])}
+																							{$node_name_split[2]}
+																						{else}
+																							{$single_muport['user']['port']}
+																						{/if}
+
 																					</span></p>
 
 																					<p>加密方式：<span class="label label-brand">
