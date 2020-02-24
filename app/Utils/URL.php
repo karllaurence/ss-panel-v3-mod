@@ -379,7 +379,7 @@ class URL
                 return;
             }
             $user = URL::getSSConnectInfo($user);
-            if($mu_port != 0) {
+            if($mu_port != 0 && !empty($node_name_split[1])) {
                 $return_array['port'] = $node_name_split[1];
             }else{
                 $return_array['port'] = $user->port;
@@ -389,7 +389,7 @@ class URL
                 return;
             }
             $user = URL::getSSRConnectInfo($user);
-            if($mu_port != 0) {
+            if($mu_port != 0 && !empty($node_name_split[2])) {
                 $return_array['port'] = $node_name_split[2];
             }else{
                 $return_array['port'] = $user->port;
