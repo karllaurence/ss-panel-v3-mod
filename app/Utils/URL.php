@@ -408,8 +408,8 @@ class URL
         $return_array['group'] = Config::get('appName');
         /*if($mu_port != 0) {
             $return_array['group'] .= ' - 单端口多用户';
-        }
-        return $return_array;*/
+        }*/
+        return $return_array;
     }
 
     public static function cloneUser($user) {
