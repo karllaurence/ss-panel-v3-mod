@@ -138,7 +138,7 @@
 																				{$relay_rule = $tools->pick_out_relay_rule($node->id, $single_muport['server']->server, $relay_rules)}
 																			{/if}
 
-																			{assign var="node_name_split" value="#"|explode:$relay_rule->dist_node()->name}
+																			
 
 																			<div class="card">
 																				<div class="card-main">
