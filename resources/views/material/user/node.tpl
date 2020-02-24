@@ -45,6 +45,8 @@
 											{foreach $node_prefix as $prefix => $nodes}
 												{$id=$id+1}
 
+												{assign var="node_name_split" value="#"|explode:$prefix}
+												
 													<div class="tile tile-collapse">
 														<div data-toggle="tile" data-target="#heading{$node_order->$prefix}">
 															<div class="tile-side pull-left" data-ignore="tile">
@@ -53,7 +55,7 @@
 																</div>
 															</div>
 															<div class="tile-inner">
-																<div class="text-overflow">{$prefix} | <i class="icon icon-lg">person</i> {$node_alive[$prefix]} | <i class="icon icon-lg">build</i> {$node_method[$prefix]} | <i class="icon icon-lg">traffic</i> {if isset($node_bandwidth[$prefix])==true}{$node_bandwidth[$prefix]}{else}N/A{/if}</div>
+																<div class="text-overflow">{$node_name_split[0]} | <i class="icon icon-lg">person</i> {$node_alive[$prefix]} | <i class="icon icon-lg">build</i> {$node_method[$prefix]} | <i class="icon icon-lg">traffic</i> {if isset($node_bandwidth[$prefix])==true}{$node_bandwidth[$prefix]}{else}N/A{/if}</div>
 															</div>
 														</div>
 														<div class="collapsible-region collapse" id="heading{$node_order->$prefix}">
@@ -137,8 +139,6 @@
 																			{if $node->sort == 10 && $single_muport['user']['is_multi_user'] != 2}
 																				{$relay_rule = $tools->pick_out_relay_rule($node->id, $single_muport['server']->server, $relay_rules)}
 																			{/if}
-
-																			{assign var="node_name_split" value="#"|explode:$prefix}
 
 																			<div class="card">
 																				<div class="card-main">
