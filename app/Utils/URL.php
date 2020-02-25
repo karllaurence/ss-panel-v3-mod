@@ -352,11 +352,13 @@ class URL
             }
         )->first();
 
-        $node_name = $node->name;
-        $node_name_split = explode("#",$node_name);
+        $node_name_split = explode("#",$node->name);
 
         if ($relay_rule != null) {
-            $node_name .= " - ".$relay_rule->dist_node()->name;
+            $relay_node_name_split = explode("#",$relay_rule->dist_node()->name);
+            $node_name = $node_name_split[0]." - ".$relay_node_name_split[0];
+        }else{
+            $node_name = $node_name_split[0];
         }
 
         if($mu_port != 0) {
@@ -400,7 +402,7 @@ class URL
         //$return_array['port'] = $user->port;
         $return_array['passwd'] = $user->passwd;
         $return_array['method'] = $user->method;
-        $return_array['remark'] = $node_name_split[0];
+        $return_array['remark'] = $node_name;
         $return_array['protocol'] = $user->protocol;
         $return_array['protocol_param'] = $user->protocol_param;
         $return_array['obfs'] = $user->obfs;
